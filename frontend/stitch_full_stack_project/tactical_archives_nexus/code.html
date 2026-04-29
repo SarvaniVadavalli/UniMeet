@@ -1,0 +1,748 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>VOID_NEXUS_OS - APPOINTMENT_LOGS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .clip-path-chamfer-bottom {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 98% 100%, 0% 100%);
+      }
+      .clip-path-chamfer-angled {
+        clip-path: polygon(0% 0%, 95% 0%, 100% 15%, 100% 100%, 5% 100%, 0% 85%);
+      }
+      .clip-path-reticle {
+        clip-path: polygon(0 0, 20% 0, 20% 2px, 2px 2px, 2px 20%, 0 20%);
+      }
+      .scanline-overlay {
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(199, 255, 254, 0.03) 50%
+        );
+        background-size: 100% 4px;
+        pointer-events: none;
+      }
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f1511;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #3a4a49;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #c7fffe;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#343b36",
+              "secondary-fixed": "#e9ddff",
+              "primary-container": "#00f0f0",
+              primary: "#c7fffe",
+              "on-secondary": "#3c0091",
+              "on-error-container": "#ffdad6",
+              "on-primary": "#003737",
+              "error-container": "#93000a",
+              outline: "#849493",
+              "inverse-primary": "#006a6a",
+              "inverse-on-surface": "#2c322d",
+              "on-surface-variant": "#b9cac9",
+              "secondary-fixed-dim": "#d0bcff",
+              error: "#ffb4ab",
+              "tertiary-fixed-dim": "#d3bbff",
+              "surface-variant": "#303632",
+              tertiary: "#faf1ff",
+              "on-primary-fixed": "#002020",
+              "on-background": "#dee4dd",
+              "on-secondary-fixed": "#23005c",
+              "tertiary-fixed": "#ebddff",
+              "on-tertiary-container": "#6e43be",
+              "inverse-surface": "#dee4dd",
+              "primary-fixed": "#2cfbfb",
+              "surface-container": "#1b211d",
+              "on-primary-fixed-variant": "#004f4f",
+              "on-surface": "#dee4dd",
+              "surface-container-low": "#171d19",
+              "secondary-container": "#571ebd",
+              "surface-tint": "#00dddd",
+              secondary: "#d0bcff",
+              "on-primary-container": "#006969",
+              "surface-container-high": "#252b27",
+              "primary-fixed-dim": "#00dddd",
+              "on-tertiary-fixed-variant": "#5728a5",
+              "on-tertiary": "#3f008d",
+              surface: "#0f1511",
+              "on-tertiary-fixed": "#250059",
+              "tertiary-container": "#e2d0ff",
+              "surface-dim": "#0f1511",
+              "surface-container-lowest": "#0a0f0c",
+              "outline-variant": "#3a4a49",
+              "on-secondary-fixed-variant": "#551abb",
+              "on-error": "#690005",
+              "surface-container-highest": "#303632",
+              background: "#0f1511",
+              "on-secondary-container": "#c4abff",
+            },
+            borderRadius: {
+              DEFAULT: "0px",
+              lg: "0px",
+              xl: "0px",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary"
+  >
+    <!-- TopNavBar Shell -->
+    <nav
+      class="fixed top-0 w-full z-50 clip-path-chamfer-bottom bg-[#0f1511]/80 backdrop-blur-xl border-b border-[#c7fffe]/10 flex justify-between items-center px-8 h-16 shadow-[0_4px_20px_rgba(0,240,240,0.05)]"
+    >
+      <div class="flex items-center gap-8">
+        <span
+          class="text-2xl font-bold tracking-widest text-[#c7fffe] drop-shadow-[0_0_10px_rgba(199,255,254,0.3)] font-['Space_Grotesk'] uppercase"
+          >VOID_NEXUS_OS</span
+        >
+        <div
+          class="hidden md:flex gap-6 font-['Space_Grotesk'] tracking-tighter uppercase text-[14px]"
+        >
+          <a
+            class="text-[#c7fffe]/50 hover:text-[#c7fffe]/80 transition-colors"
+            href="#"
+            >TELEMETRY</a
+          >
+          <a
+            class="text-[#c7fffe]/50 hover:text-[#c7fffe]/80 transition-colors"
+            href="#"
+            >COMS</a
+          >
+          <a
+            class="text-[#c7fffe]/50 hover:text-[#c7fffe]/80 transition-colors"
+            href="#"
+            >UPLINK</a
+          >
+        </div>
+      </div>
+      <div class="flex items-center gap-6">
+        <div class="relative hidden lg:block">
+          <input
+            class="bg-surface-container-highest border-none text-primary text-xs tracking-widest uppercase focus:ring-1 focus:ring-primary w-64 px-4 py-1.5"
+            placeholder="QUERY_RECORDS..."
+            type="text"
+          />
+        </div>
+        <div class="flex gap-4">
+          <button
+            class="material-symbols-outlined text-[#c7fffe] hover:bg-[#c7fffe]/5 transition-all duration-300 p-2 active:scale-95"
+          >
+            notifications_paused
+          </button>
+          <button
+            class="material-symbols-outlined text-[#c7fffe] hover:bg-[#c7fffe]/5 transition-all duration-300 p-2 active:scale-95"
+          >
+            account_tree
+          </button>
+          <div
+            class="h-8 w-8 bg-surface-container-highest border border-primary/20 overflow-hidden"
+          >
+            <img
+              alt="User Bio-Metric Avatar"
+              data-alt="Stylized futuristic digital avatar with cyan light traces on a dark biometric profile background"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWFcitphYadVkShxBzQPbLwdh2na41l9q0V8FAG5RHSapCUT7DrloMLqIuin2lOXO9G4mi_tYoOKWAfv7-VjTUCniMxQI16uVQRP6RZJ4Y977i1zjxt3s-x-moYRlYfJSUPdIEgWRRp3DSf2CXDO02qWcDO5QRzfGlrsneiyiTiLmIvUsoFj4ymf0DAcFbGbVafEfG4oz3H2IYpoG6pHqj13p5dLKk3KpjbzsIpPq8TQkNSoVlKI6wjxdCyFdweQ9tMzK2BaYuOjt4"
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- SideNavBar Shell -->
+    <aside
+      class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-[#c7fffe]/10 bg-[#0f1511] flex flex-col py-6 z-40"
+    >
+      <div class="px-6 mb-10">
+        <div
+          class="text-[10px] tracking-[0.2em] text-primary/40 uppercase mb-1"
+        >
+          TERMINAL_LINK
+        </div>
+        <div
+          class="font-headline font-bold text-lg text-primary tracking-tight"
+        >
+          FACULTY_COMMAND
+        </div>
+        <div class="text-[10px] font-label tracking-[0.3em] text-primary/60">
+          SECTOR_07
+        </div>
+      </div>
+      <nav class="flex-1 flex flex-col gap-1">
+        <a
+          class="flex items-center gap-4 px-6 py-3 text-[#c7fffe]/40 hover:bg-[#c7fffe]/5 hover:text-[#c7fffe]/70 transition-all duration-200 font-['Space_Grotesk'] text-[12px] tracking-[0.1em] uppercase"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-sm">terminal</span>
+          COMMAND
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-3 text-[#c7fffe]/40 hover:bg-[#c7fffe]/5 hover:text-[#c7fffe]/70 transition-all duration-200 font-['Space_Grotesk'] text-[12px] tracking-[0.1em] uppercase"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-sm">grid_view</span> SLOTS
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-3 text-[#c7fffe]/40 hover:bg-[#c7fffe]/5 hover:text-[#c7fffe]/70 transition-all duration-200 font-['Space_Grotesk'] text-[12px] tracking-[0.1em] uppercase"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-sm">pending_actions</span>
+          REQUESTS
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-3 bg-[#c7fffe]/10 text-[#c7fffe] border-l-4 border-[#c7fffe] shadow-[inset_0_0_15px_rgba(199,255,254,0.1)] font-['Space_Grotesk'] text-[12px] tracking-[0.1em] uppercase"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-sm">history</span> LOGS
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-3 text-[#c7fffe]/40 hover:bg-[#c7fffe]/5 hover:text-[#c7fffe]/70 transition-all duration-200 font-['Space_Grotesk'] text-[12px] tracking-[0.1em] uppercase"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-sm"
+            >settings_input_component</span
+          >
+          SYSTEM
+        </a>
+      </nav>
+      <div class="mt-auto px-4">
+        <button
+          class="w-full py-3 bg-primary-container text-on-primary font-headline font-bold text-xs tracking-widest uppercase active:scale-95 transition-transform clip-path-chamfer-angled"
+        >
+          INITIATE_SYNC
+        </button>
+        <button
+          class="w-full flex items-center justify-center gap-2 mt-4 py-2 text-error/60 hover:text-error transition-colors text-[10px] tracking-widest uppercase font-label"
+        >
+          <span class="material-symbols-outlined text-sm"
+            >power_settings_new</span
+          >
+          TERMINATE
+        </button>
+      </div>
+    </aside>
+    <!-- Main Content Canvas -->
+    <main class="ml-64 mt-16 p-8 min-h-screen relative">
+      <div class="scanline-overlay absolute inset-0 z-0"></div>
+      <!-- Header Section -->
+      <header
+        class="relative z-10 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
+      >
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 bg-primary animate-pulse"></span>
+            <span
+              class="text-primary/60 font-label text-[10px] tracking-[0.4em] uppercase"
+              >Archive_System.v4.0</span
+            >
+          </div>
+          <h1
+            class="text-6xl font-headline font-bold tracking-tighter text-on-surface uppercase leading-none"
+          >
+            Appointment
+            <span
+              class="text-primary underline decoration-primary/20 underline-offset-8"
+              >Records</span
+            >
+          </h1>
+        </div>
+        <!-- Kinetic Stats -->
+        <div class="flex gap-12 border-l border-outline-variant/30 pl-12">
+          <div class="flex flex-col">
+            <span
+              class="text-primary font-headline text-4xl font-bold tracking-tighter"
+              >1,402</span
+            >
+            <span
+              class="text-primary/40 font-label text-[10px] tracking-widest uppercase"
+              >Total Encounters</span
+            >
+          </div>
+          <div class="flex flex-col">
+            <span
+              class="text-primary font-headline text-4xl font-bold tracking-tighter"
+              >98.4%</span
+            >
+            <span
+              class="text-primary/40 font-label text-[10px] tracking-widest uppercase"
+              >Sync Success Rate</span
+            >
+          </div>
+        </div>
+      </header>
+      <!-- Functional Grid -->
+      <div class="grid grid-cols-12 gap-8 relative z-10">
+        <!-- Filters & Quick Actions -->
+        <section class="col-span-12 lg:col-span-3 space-y-6">
+          <div
+            class="bg-surface-container-low p-6 border-l-2 border-primary/20 relative group overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 p-1 opacity-20 group-hover:opacity-100 transition-opacity"
+            >
+              <span class="material-symbols-outlined text-primary text-sm"
+                >tune</span
+              >
+            </div>
+            <h3
+              class="text-on-surface-variant font-headline text-xs tracking-widest uppercase mb-4"
+            >
+              Tactical_Filter
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label
+                  class="text-[10px] text-primary/40 tracking-widest uppercase mb-2 block"
+                  >Caste / Sector</label
+                >
+                <select
+                  class="w-full bg-surface-container-highest border-none text-primary text-xs py-2 focus:ring-1 focus:ring-primary"
+                >
+                  <option>ALL_DIVISIONS</option>
+                  <option>CYBERNETICS</option>
+                  <option>NEURAL_ARCH</option>
+                  <option>VOID_STUDIES</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="text-[10px] text-primary/40 tracking-widest uppercase mb-2 block"
+                  >Outcome_Status</label
+                >
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold tracking-tighter border border-primary/20"
+                    >SUCCESS</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-surface-container-highest text-on-surface-variant/40 text-[10px] font-bold tracking-tighter border border-outline-variant/10"
+                    >CORRUPTED</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-surface-container-highest text-on-surface-variant/40 text-[10px] font-bold tracking-tighter border border-outline-variant/10"
+                    >PENDING</span
+                  >
+                </div>
+              </div>
+              <button
+                class="w-full py-2 border border-primary/40 text-primary font-label text-[10px] tracking-widest uppercase hover:bg-primary/5 transition-all"
+              >
+                RESET_QUERY
+              </button>
+            </div>
+          </div>
+          <div
+            class="bg-surface-container-low p-6 border-l-2 border-secondary/20"
+          >
+            <h3
+              class="text-secondary font-headline text-xs tracking-widest uppercase mb-4"
+            >
+              Export_Stream
+            </h3>
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                class="flex flex-col items-center justify-center py-4 bg-surface-container-highest hover:bg-secondary/10 transition-colors border border-outline-variant/10"
+              >
+                <span
+                  class="material-symbols-outlined text-secondary text-sm mb-1"
+                  >download</span
+                >
+                <span
+                  class="text-[8px] text-on-surface-variant tracking-widest uppercase"
+                  >CSV_ARCHIVE</span
+                >
+              </button>
+              <button
+                class="flex flex-col items-center justify-center py-4 bg-surface-container-highest hover:bg-secondary/10 transition-colors border border-outline-variant/10"
+              >
+                <span
+                  class="material-symbols-outlined text-secondary text-sm mb-1"
+                  >terminal</span
+                >
+                <span
+                  class="text-[8px] text-on-surface-variant tracking-widest uppercase"
+                  >JSON_LINK</span
+                >
+              </button>
+            </div>
+          </div>
+        </section>
+        <!-- Main Data Table -->
+        <section class="col-span-12 lg:col-span-9">
+          <div
+            class="bg-surface-container-low backdrop-blur-md overflow-hidden relative border border-outline-variant/10"
+          >
+            <!-- Reticle Accents -->
+            <div
+              class="absolute top-0 left-0 w-8 h-8 clip-path-reticle bg-primary/40"
+            ></div>
+            <div
+              class="absolute bottom-0 right-0 w-8 h-8 clip-path-reticle bg-primary/40 rotate-180"
+            ></div>
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr
+                  class="border-b border-outline-variant/30 bg-surface-container"
+                >
+                  <th
+                    class="px-6 py-4 text-[10px] font-label font-bold tracking-[0.2em] text-primary/60 uppercase"
+                  >
+                    Timestamp
+                  </th>
+                  <th
+                    class="px-6 py-4 text-[10px] font-label font-bold tracking-[0.2em] text-primary/60 uppercase"
+                  >
+                    Faculty_Entity
+                  </th>
+                  <th
+                    class="px-6 py-4 text-[10px] font-label font-bold tracking-[0.2em] text-primary/60 uppercase"
+                  >
+                    Subject_ID
+                  </th>
+                  <th
+                    class="px-6 py-4 text-[10px] font-label font-bold tracking-[0.2em] text-primary/60 uppercase"
+                  >
+                    Encounter_Type
+                  </th>
+                  <th
+                    class="px-6 py-4 text-[10px] font-label font-bold tracking-[0.2em] text-primary/60 uppercase"
+                  >
+                    Sync_Outcome
+                  </th>
+                  <th class="px-6 py-4"></th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-outline-variant/10">
+                <!-- Row 1 -->
+                <tr class="hover:bg-primary/5 transition-colors group">
+                  <td
+                    class="px-6 py-4 font-mono text-[11px] text-on-surface-variant/70"
+                  >
+                    2044.12.08 // 09:42
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-6 h-6 bg-surface-container-highest border border-primary/10"
+                      >
+                        <img
+                          alt="Faculty Avatar"
+                          data-alt="Close-up of a high-tech obsidian sensory mask with glowing cyan optics"
+                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm2jT_Ft52g2IuAYfZ7Lj5PvoYAScbILZRdVBgImpykzmk-468t0rfPk1EYYKXC3cKWhm0l-7eT4MFVAMznqJPVfeJNc8F8fr8vig_xjaIKkn7Q_rDk5nL18o0EG7JKl1wv0wpdQFhUQhBRwPLnN9q9shv7_3RIJ9YerkychPS-k0Ni_BxrcX6KwJ7JIpE1G3kc4QojRnrQ0boXo9tdI_LLgAw-5lvVMBK6qSXbLAg5kb9bzE4-6trSGJFPXKvh1YLgmQF02DjJjWt"
+                        />
+                      </div>
+                      <span
+                        class="text-xs font-headline font-bold text-on-surface tracking-tight"
+                        >DR_VON_STRATOS</span
+                      >
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-xs font-label text-primary/80">
+                    #STU-4402
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="text-[10px] tracking-widest text-on-surface-variant/60 uppercase"
+                      >Neural_Uplink</span
+                    >
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="h-1.5 w-1.5 bg-primary shadow-[0_0_8px_rgba(199,255,254,0.8)]"
+                      ></div>
+                      <span
+                        class="text-[10px] font-bold text-primary tracking-tighter"
+                        >SYNCHRONIZED</span
+                      >
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button
+                      class="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors text-lg"
+                    >
+                      open_in_new
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr class="hover:bg-primary/5 transition-colors group">
+                  <td
+                    class="px-6 py-4 font-mono text-[11px] text-on-surface-variant/70"
+                  >
+                    2044.12.08 // 08:15
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-6 h-6 bg-surface-container-highest border border-primary/10"
+                      >
+                        <img
+                          alt="Faculty Avatar"
+                          data-alt="Portrait of a robotic entity with sleek white composite armor and glowing blue internal elements"
+                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJVi5yICpYef6EwlEKcBJ7LIL9_JGeMcEY5pkbk2ZFclNoNq6AZliCKmeWkajJHWiTmLWcCCVs2qLPkH2s95d5rpZ9VhQMRlXQVlEu8RTaUfXW7AXX0vtOTOLJ8Oy4J7E3QUl7WmxhwzNbZ-QCeAF2D6UW4K_PGf2ed6EuQDP0mQThscHrm0LppG196jYDiq9NiCXHI74Ugyvlvl-53DGnMjiGExfnIxTOZlyz61bDwf56xI7Smn0WIhuKJg-L9knXKunbVTqRc4e1"
+                        />
+                      </div>
+                      <span
+                        class="text-xs font-headline font-bold text-on-surface tracking-tight"
+                        >XEN_COMMANDER</span
+                      >
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-xs font-label text-primary/80">
+                    #STU-9912
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="text-[10px] tracking-widest text-on-surface-variant/60 uppercase"
+                      >Field_Indoctrination</span
+                    >
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="h-1.5 w-1.5 bg-error shadow-[0_0_8px_rgba(255,180,171,0.8)]"
+                      ></div>
+                      <span
+                        class="text-[10px] font-bold text-error tracking-tighter"
+                        >DATA_CORRUPTION</span
+                      >
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button
+                      class="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors text-lg"
+                    >
+                      open_in_new
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 3 -->
+                <tr class="hover:bg-primary/5 transition-colors group">
+                  <td
+                    class="px-6 py-4 font-mono text-[11px] text-on-surface-variant/70"
+                  >
+                    2044.12.07 // 22:10
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-6 h-6 bg-surface-container-highest border border-primary/10"
+                      >
+                        <img
+                          alt="Faculty Avatar"
+                          data-alt="A futuristic visor displaying scrolling code and biometric telemetry data in neon teal"
+                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuABCVbRkutS2CziuaJOGt1L-lUxIzTDq-hisXBERTMNEhMDFJYbTFVwyKL6vJdcz2oG7HgUy4p8Bj8f3eWM58iiwAAo7dKH474ZqrAdNLwzxNsVueS9lRXcm8pl8wZ0aQQ694I6j7JtghoDKp4AAkVxDQ_K2QZLaPi9HLDVQYrF6OQ_LD0p_OumLq2-VaVi8HuNa56AZL0Pr-F99g63cf_FvM-5_7eOGNs7Ib5le6dzzGACza0OhnlKJ6uylY3wCytkSeYbPErJcSJT"
+                        />
+                      </div>
+                      <span
+                        class="text-xs font-headline font-bold text-on-surface tracking-tight"
+                        >ARCHITECT_M01</span
+                      >
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-xs font-label text-primary/80">
+                    #STU-1108
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="text-[10px] tracking-widest text-on-surface-variant/60 uppercase"
+                      >Void_Tethering</span
+                    >
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="h-1.5 w-1.5 bg-secondary shadow-[0_0_8px_rgba(208,188,255,0.8)]"
+                      ></div>
+                      <span
+                        class="text-[10px] font-bold text-secondary tracking-tighter"
+                        >PENDING_CONFIRMATION</span
+                      >
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button
+                      class="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors text-lg"
+                    >
+                      open_in_new
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 4 -->
+                <tr
+                  class="hover:bg-primary/5 transition-colors group border-b border-outline-variant/10"
+                >
+                  <td
+                    class="px-6 py-4 font-mono text-[11px] text-on-surface-variant/70"
+                  >
+                    2044.12.07 // 14:30
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-6 h-6 bg-surface-container-highest border border-primary/10"
+                      >
+                        <img
+                          alt="Faculty Avatar"
+                          data-alt="Detailed close up of a circuit-patterned iris in a cybernetic eye glowing softly with primary cyan light"
+                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9RBumykktpCKarz2_RWNPbVmuQ8GMPwi8kIL5q9UtXub5IN09I597hT48-MxRgGidzFunpIsumAfcaolbQfKT5l2ygWqp-6VfLzNXXt8Z6OYqjq3bYXEhPOKfP8Q47jVv6cDMNTKYH6qP3S-QHZ3E-If1mrThm7-afN4eJdVNdC4Mj8PwgFaN3sJyfa1jHKbjIsrKGcyZ6Q7ieYcdo4-FYPpmJTTHj73_IByQGHpoaPyO0PY0XzjMpuDlf9EOrh2EUw9-87PGbO-N"
+                        />
+                      </div>
+                      <span
+                        class="text-xs font-headline font-bold text-on-surface tracking-tight"
+                        >OVERSEER_ALPHA</span
+                      >
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-xs font-label text-primary/80">
+                    #STU-0019
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="text-[10px] tracking-widest text-on-surface-variant/60 uppercase"
+                      >Memory_Purge</span
+                    >
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="h-1.5 w-1.5 bg-primary shadow-[0_0_8px_rgba(199,255,254,0.8)]"
+                      ></div>
+                      <span
+                        class="text-[10px] font-bold text-primary tracking-tighter"
+                        >SYNCHRONIZED</span
+                      >
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button
+                      class="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors text-lg"
+                    >
+                      open_in_new
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div
+              class="px-6 py-4 bg-surface-container/50 flex justify-between items-center"
+            >
+              <span
+                class="text-[10px] text-primary/40 tracking-widest uppercase"
+                >Page 01 of 144</span
+              >
+              <div class="flex gap-4">
+                <button
+                  class="material-symbols-outlined text-primary/40 hover:text-primary transition-colors"
+                >
+                  chevron_left
+                </button>
+                <button
+                  class="material-symbols-outlined text-primary/40 hover:text-primary transition-colors"
+                >
+                  chevron_right
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Footer Telemetry -->
+          <div class="mt-8 grid grid-cols-3 gap-4">
+            <div
+              class="bg-surface-container-highest/30 p-4 border-t border-primary/10"
+            >
+              <div
+                class="text-[8px] text-primary/30 tracking-[0.3em] uppercase mb-1"
+              >
+                BUFFER_LOAD
+              </div>
+              <div class="h-1 w-full bg-surface-container relative">
+                <div
+                  class="absolute left-0 top-0 h-full w-2/3 bg-primary"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="bg-surface-container-highest/30 p-4 border-t border-primary/10"
+            >
+              <div
+                class="text-[8px] text-primary/30 tracking-[0.3em] uppercase mb-1"
+              >
+                LATENCY_PULSE
+              </div>
+              <div class="flex gap-1 items-end h-4">
+                <div class="w-1 h-2 bg-primary/40"></div>
+                <div class="w-1 h-3 bg-primary/60"></div>
+                <div class="w-1 h-4 bg-primary"></div>
+                <div class="w-1 h-2 bg-primary/40"></div>
+                <div class="w-1 h-1 bg-primary/20"></div>
+              </div>
+            </div>
+            <div
+              class="bg-surface-container-highest/30 p-4 border-t border-primary/10"
+            >
+              <div
+                class="text-[8px] text-primary/30 tracking-[0.3em] uppercase mb-1"
+              >
+                ENCRYPTION_LAYER
+              </div>
+              <div class="text-[10px] text-on-surface-variant font-mono">
+                X00-SY-A992-11
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- Visual Flair: Corner Brackets -->
+    <div
+      class="fixed top-20 right-8 w-24 h-24 pointer-events-none opacity-20 hidden lg:block"
+    >
+      <div
+        class="absolute top-0 right-0 w-full h-1 border-t border-primary"
+      ></div>
+      <div
+        class="absolute top-0 right-0 w-1 h-full border-r border-primary"
+      ></div>
+      <div class="absolute top-0 right-0 p-4">
+        <span class="text-[8px] font-mono text-primary uppercase vertical-text"
+          >SEC_CHECK</span
+        >
+      </div>
+    </div>
+  </body>
+</html>

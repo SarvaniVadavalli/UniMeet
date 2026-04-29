@@ -1,0 +1,318 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#3a4a49",
+              "on-tertiary": "#3f008d",
+              "secondary-fixed-dim": "#d0bcff",
+              "secondary-fixed": "#e9ddff",
+              background: "#0f1511",
+              "surface-container-high": "#252b27",
+              "on-tertiary-fixed": "#250059",
+              "inverse-surface": "#dee4dd",
+              "on-tertiary-container": "#6e43be",
+              "surface-container-low": "#171d19",
+              "on-background": "#dee4dd",
+              "surface-container": "#1b211d",
+              surface: "#0f1511",
+              "inverse-on-surface": "#2c322d",
+              "tertiary-fixed": "#ebddff",
+              "surface-bright": "#343b36",
+              "inverse-primary": "#006a6a",
+              error: "#ffb4ab",
+              "secondary-container": "#571ebd",
+              "primary-container": "#00f0f0",
+              "on-error-container": "#ffdad6",
+              "primary-fixed": "#2cfbfb",
+              secondary: "#d0bcff",
+              "on-primary-fixed-variant": "#004f4f",
+              "surface-container-lowest": "#0a0f0c",
+              "on-secondary-fixed-variant": "#551abb",
+              tertiary: "#faf1ff",
+              "surface-variant": "#303632",
+              "on-surface-variant": "#b9cac9",
+              "on-primary-fixed": "#002020",
+              "on-surface": "#dee4dd",
+              "on-primary-container": "#006969",
+              "surface-dim": "#0f1511",
+              "surface-tint": "#00dddd",
+              "surface-container-highest": "#303632",
+              "tertiary-fixed-dim": "#d3bbff",
+              "error-container": "#93000a",
+              "on-primary": "#003737",
+              outline: "#849493",
+              primary: "#c7fffe",
+              "on-error": "#690005",
+              "primary-fixed-dim": "#00dddd",
+              "on-tertiary-fixed-variant": "#5728a5",
+              "tertiary-container": "#e2d0ff",
+              "on-secondary-fixed": "#23005c",
+              "on-secondary-container": "#c4abff",
+              "on-secondary": "#3c0091",
+            },
+            borderRadius: {
+              DEFAULT: "0px",
+              lg: "0px",
+              xl: "0px",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #0f1511;
+        background-image:
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(0, 240, 240, 0.05) 0%,
+            transparent 50%
+          ),
+          linear-gradient(rgba(20, 25, 22, 0.5) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(20, 25, 22, 0.5) 1px, transparent 1px);
+        background-size:
+          100% 100%,
+          40px 40px,
+          40px 40px;
+        font-family: "Inter", sans-serif;
+      }
+      .chamfered {
+        clip-path: polygon(0% 0%, 92% 0%, 100% 12%, 100% 100%, 8% 100%, 0% 88%);
+      }
+      .chamfered-sm {
+        clip-path: polygon(0% 0%, 95% 0%, 100% 25%, 100% 100%, 5% 100%, 0% 75%);
+      }
+      .scanline {
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(0, 240, 240, 0.03) 50%
+        );
+        background-size: 100% 2px;
+        pointer-events: none;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 300,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
+  <body
+    class="text-on-background font-body selection:bg-primary/30 selection:text-primary overflow-hidden h-screen w-screen flex items-center justify-center bg-[#0f1511]"
+  >
+    <!-- Cinematic Background -->
+    <div class="fixed inset-0 scanline z-0"></div>
+    <!-- Background Elements: Corner Brackets -->
+    <div
+      class="fixed top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-primary/20 pointer-events-none"
+    ></div>
+    <div
+      class="fixed top-8 right-8 w-16 h-16 border-t-2 border-r-2 border-primary/20 pointer-events-none"
+    ></div>
+    <div
+      class="fixed bottom-8 left-8 w-16 h-16 border-b-2 border-l-2 border-primary/20 pointer-events-none"
+    ></div>
+    <div
+      class="fixed bottom-8 right-8 w-16 h-16 border-b-2 border-r-2 border-primary/20 pointer-events-none"
+    ></div>
+    <!-- Login Module Wrapper -->
+    <main class="relative z-10 w-full max-w-md px-6">
+      <!-- Branding Top -->
+      <div class="mb-12 text-center">
+        <h1
+          class="font-headline font-black text-4xl tracking-tighter text-primary drop-shadow-[0_0_15px_rgba(199,255,254,0.3)] mb-2"
+        >
+          VOID_NEXUS
+        </h1>
+        <div class="flex items-center justify-center gap-4">
+          <div class="h-[1px] w-8 bg-primary/30"></div>
+          <span
+            class="font-label text-[10px] tracking-[0.3em] text-primary/60 uppercase"
+            >System Authorization Required</span
+          >
+          <div class="h-[1px] w-8 bg-primary/30"></div>
+        </div>
+      </div>
+      <!-- Login Card -->
+      <div class="relative group">
+        <!-- Decorative Glow Layer -->
+        <div
+          class="absolute -inset-0.5 bg-primary/10 blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"
+        ></div>
+        <div
+          class="relative chamfered backdrop-blur-2xl border border-primary/10 p-10 flex flex-col gap-8 shadow-2xl bg-[#171d19]/80"
+        >
+          <!-- Card Header -->
+          <div class="space-y-1">
+            <h2
+              class="font-headline font-bold text-2xl tracking-widest text-primary uppercase"
+            >
+              ADMIN_LOGIN
+            </h2>
+            <p
+              class="font-label text-[10px] text-on-surface-variant/60 uppercase tracking-widest"
+            >
+              Protocol: Secure_Uplink_v4.2
+            </p>
+          </div>
+          <!-- Input Fields -->
+          <form class="space-y-6">
+            <!-- Email Input -->
+            <div class="space-y-2 group/field">
+              <label
+                class="block font-label text-[10px] font-semibold text-primary/70 uppercase tracking-widest ml-1"
+                >Terminal_Identity</label
+              >
+              <div class="relative">
+                <span
+                  class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 text-lg"
+                  >alternate_email</span
+                >
+                <input
+                  class="w-full bg-surface-container-highest/50 border-0 border-l-2 border-transparent focus:border-primary focus:ring-0 text-primary font-body text-sm py-4 pl-12 pr-4 transition-all duration-300 placeholder:text-primary/20 uppercase tracking-wider"
+                  placeholder="ADMIN@VOIDNEXUS.SYS"
+                  type="email"
+                />
+              </div>
+            </div>
+            <!-- Password Input -->
+            <div class="space-y-2 group/field">
+              <label
+                class="block font-label text-[10px] font-semibold text-primary/70 uppercase tracking-widest ml-1"
+                >Access_Cipher</label
+              >
+              <div class="relative">
+                <span
+                  class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 text-lg"
+                  >key</span
+                >
+                <input
+                  class="w-full bg-surface-container-highest/50 border-0 border-l-2 border-transparent focus:border-primary focus:ring-0 text-primary font-body text-sm py-4 pl-12 pr-4 transition-all duration-300 placeholder:text-primary/20"
+                  placeholder="••••••••••••"
+                  type="password"
+                />
+              </div>
+            </div>
+            <!-- Action Button -->
+            <div class="pt-4">
+              <button
+                class="w-full relative group/btn overflow-hidden"
+                type="submit"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-r from-primary to-primary-container group-hover:opacity-90 transition-opacity"
+                ></div>
+                <div
+                  class="relative chamfered-sm px-8 py-5 flex items-center justify-center gap-3"
+                >
+                  <span
+                    class="font-headline font-black text-on-primary text-xs uppercase tracking-[0.2em]"
+                    >INITIALIZE_COMMAND_SESSION</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-on-primary text-lg"
+                    >bolt</span
+                  >
+                </div>
+                <!-- Button Glow -->
+                <div
+                  class="absolute inset-0 bg-primary/20 blur-lg group-hover:blur-xl transition-all duration-300 -z-10"
+                ></div>
+              </button>
+            </div>
+          </form>
+          <!-- Footer Stats -->
+          <div
+            class="flex items-center justify-between pt-4 border-t border-primary/5"
+          >
+            <div class="flex flex-col">
+              <span
+                class="font-label text-[8px] text-on-surface-variant/40 uppercase tracking-widest"
+                >Signal_Strength</span
+              >
+              <span
+                class="font-label text-[10px] text-primary/60 font-bold uppercase tracking-tighter"
+                >98.4% STABLE</span
+              >
+            </div>
+            <div class="flex flex-col items-end">
+              <span
+                class="font-label text-[8px] text-on-surface-variant/40 uppercase tracking-widest"
+                >Encryption_Layer</span
+              >
+              <span
+                class="font-label text-[10px] text-primary/60 font-bold uppercase tracking-tighter"
+                >AES-256 QUANTUM</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Utility Links -->
+      <div class="mt-8 flex justify-between items-center px-4">
+        <button
+          class="font-label text-[9px] text-primary/40 hover:text-primary uppercase tracking-widest transition-colors flex items-center gap-2"
+        >
+          <span class="material-symbols-outlined text-sm">terminal</span>
+          RECOVERY_MODE
+        </button>
+        <button
+          class="font-label text-[9px] text-primary/40 hover:text-primary uppercase tracking-widest transition-colors flex items-center gap-2"
+        >
+          SYSTEM_SUPPORT
+          <span class="material-symbols-outlined text-sm">help_center</span>
+        </button>
+      </div>
+    </main>
+    <!-- UI Metadata Elements -->
+    <div
+      class="fixed bottom-6 right-8 flex flex-col items-end gap-1 opacity-40 mix-blend-overlay"
+    >
+      <span
+        class="font-label text-[8px] tracking-[0.5em] uppercase text-on-background"
+        >Node_ID: NEX-771-ALPH</span
+      >
+      <div class="flex gap-1 h-1">
+        <div class="w-4 h-full bg-primary/40"></div>
+        <div class="w-8 h-full bg-primary/60"></div>
+        <div class="w-2 h-full bg-primary/80"></div>
+      </div>
+    </div>
+    <div
+      class="fixed top-6 left-8 font-headline font-light text-[10px] tracking-[0.8em] uppercase text-primary/20 vertical-text"
+      style="writing-mode: vertical-rl"
+    >
+      AUTHENTICATION_PHASE_01
+    </div>
+  </body>
+</html>

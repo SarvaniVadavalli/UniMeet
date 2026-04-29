@@ -1,0 +1,581 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#303632",
+              "outline-variant": "#3a4a49",
+              "inverse-surface": "#dee4dd",
+              "surface-tint": "#00dddd",
+              "on-surface": "#dee4dd",
+              "on-primary": "#003737",
+              "secondary-container": "#571ebd",
+              error: "#ffb4ab",
+              "surface-container": "#1b211d",
+              "error-container": "#93000a",
+              "on-secondary": "#3c0091",
+              outline: "#849493",
+              surface: "#0f1511",
+              "surface-dim": "#0f1511",
+              "on-background": "#dee4dd",
+              "surface-container-low": "#171d19",
+              "on-tertiary-container": "#6e43be",
+              primary: "#c7fffe",
+              "inverse-on-surface": "#2c322d",
+              secondary: "#d0bcff",
+              "surface-bright": "#343b36",
+              "on-primary-fixed": "#002020",
+              "surface-container-lowest": "#0a0f0c",
+              "inverse-primary": "#006a6a",
+              "on-tertiary-fixed": "#250059",
+              tertiary: "#faf1ff",
+              "primary-fixed": "#2cfbfb",
+              "on-tertiary": "#3f008d",
+              "on-secondary-container": "#c4abff",
+              "on-error": "#690005",
+              "primary-fixed-dim": "#00dddd",
+              "secondary-fixed-dim": "#d0bcff",
+              "surface-variant": "#303632",
+              "secondary-fixed": "#e9ddff",
+              "on-secondary-fixed-variant": "#551abb",
+              "on-error-container": "#ffdad6",
+              "tertiary-container": "#e2d0ff",
+              "surface-container-high": "#252b27",
+              "on-surface-variant": "#b9cac9",
+              "primary-container": "#00f0f0",
+              "on-tertiary-fixed-variant": "#5728a5",
+              "on-secondary-fixed": "#23005c",
+              "on-primary-container": "#006969",
+              "on-primary-fixed-variant": "#004f4f",
+              background: "#0f1511",
+              "tertiary-fixed-dim": "#d3bbff",
+              "tertiary-fixed": "#ebddff",
+            },
+            borderRadius: {
+              DEFAULT: "0px",
+              lg: "0px",
+              xl: "0px",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .chamfer-tr-bl {
+        clip-path: polygon(
+          0% 0%,
+          90% 0%,
+          100% 10%,
+          100% 100%,
+          10% 100%,
+          0% 90%
+        );
+      }
+      .chamfer-small {
+        clip-path: polygon(0% 0%, 95% 0%, 100% 15%, 100% 100%, 5% 100%, 0% 85%);
+      }
+      .scanline {
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(199, 255, 254, 0.03) 50%
+        );
+        background-size: 100% 4px;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-background font-body min-h-screen">
+    <!-- TopNavBar Shell -->
+    <header
+      class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0f1511]/80 backdrop-blur-xl bg-gradient-to-b from-[#1a221d] to-transparent shadow-[0_0_20px_rgba(0,240,240,0.15)]"
+    >
+      <div class="flex items-center gap-8">
+        <span
+          class="text-2xl font-bold tracking-widest text-[#c7fffe] uppercase font-headline"
+          >UNIMEET NEXUS</span
+        >
+        <div
+          class="hidden md:flex items-center bg-surface-container px-4 py-1.5 border border-outline-variant/30"
+        >
+          <span class="material-symbols-outlined text-sm mr-2 opacity-50"
+            >search</span
+          >
+          <input
+            class="bg-transparent border-none focus:ring-0 text-xs font-label tracking-widest p-0 w-48 text-primary uppercase"
+            placeholder="QUERY_SYSTEM..."
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-6">
+        <div class="flex gap-4">
+          <span
+            class="material-symbols-outlined text-[#c7fffe]/50 hover:text-[#c7fffe] cursor-pointer transition-all duration-300"
+            >notifications</span
+          >
+          <span
+            class="material-symbols-outlined text-[#c7fffe]/50 hover:text-[#c7fffe] cursor-pointer transition-all duration-300"
+            >settings</span
+          >
+          <span
+            class="material-symbols-outlined text-[#c7fffe]/50 hover:text-[#c7fffe] cursor-pointer transition-all duration-300"
+            >sensors</span
+          >
+        </div>
+        <div
+          class="h-8 w-8 bg-surface-container-highest border border-primary/20 p-0.5"
+        >
+          <img
+            alt="User Telemetry Profile"
+            class="w-full h-full object-cover"
+            data-alt="Cinematic portrait of a male cybernetic operator with neon light reflections on a dark futuristic background, high contrast"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC0wRSEg-iMuiM1REBNc9rBgFtgxd1VgdHRKt9zuhZ0LHoSBRDovT32__9m5zW2kvtGUyEQVlqhiLKKw56mx7FYDdyGrkMNHL1SIG9EOmHfl6e7lWyqj9EbcTZWoyspYH7W53_5CkmohaUo0OKg8bQzloMUKs9hFdIbjd9b3l3Yw34UQzIjdqJ-9rNd2Bv0NdxoCxlq6t2Y8hWzv_SNG5jQTu0rNbVLzSRBLG7SzwybFdndIV-sY4eK8MSmCOcJ8C_NWuAOSAdSDdM"
+          />
+        </div>
+      </div>
+    </header>
+    <!-- SideNavBar Shell -->
+    <nav
+      class="fixed left-0 top-0 h-screen flex flex-col pt-20 pb-6 z-40 bg-[#0f1511] w-64 border-r-0"
+    >
+      <div class="flex-1 space-y-2">
+        <a
+          class="flex items-center px-6 py-4 text-[#c7fffe]/40 border-l-4 border-transparent hover:bg-[#c7fffe]/5 hover:text-[#c7fffe] transition-colors group"
+          href="#"
+        >
+          <span class="material-symbols-outlined mr-4">grid_view</span>
+          <span class="font-headline uppercase tracking-[0.1em] text-xs"
+            >Dashboard</span
+          >
+        </a>
+        <a
+          class="flex items-center px-6 py-4 text-[#c7fffe] border-l-4 border-[#00f0f0] bg-gradient-to-r from-[#00f0f0]/10 to-transparent scale-[0.98] transition-transform duration-150"
+          href="#"
+        >
+          <span class="material-symbols-outlined mr-4">travel_explore</span>
+          <span class="font-headline uppercase tracking-[0.1em] text-xs"
+            >Faculty Discovery</span
+          >
+        </a>
+        <a
+          class="flex items-center px-6 py-4 text-[#c7fffe]/40 border-l-4 border-transparent hover:bg-[#c7fffe]/5 hover:text-[#c7fffe] transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined mr-4">event_upcoming</span>
+          <span class="font-headline uppercase tracking-[0.1em] text-xs"
+            >Schedulers</span
+          >
+        </a>
+        <a
+          class="flex items-center px-6 py-4 text-[#c7fffe]/40 border-l-4 border-transparent hover:bg-[#c7fffe]/5 hover:text-[#c7fffe] transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined mr-4">inventory_2</span>
+          <span class="font-headline uppercase tracking-[0.1em] text-xs"
+            >Archive</span
+          >
+        </a>
+      </div>
+      <div class="mt-auto space-y-1">
+        <div class="px-6 py-4 border-t border-outline-variant/10">
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-primary-container animate-pulse"></div>
+            <span
+              class="font-headline uppercase tracking-[0.1em] text-[10px] text-on-surface-variant"
+              >NEXUS_OPERATOR_01</span
+            >
+          </div>
+        </div>
+        <a
+          class="flex items-center px-6 py-3 text-[#c7fffe]/40 hover:text-[#c7fffe] transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined mr-4 text-sm"
+            >account_tree</span
+          >
+          <span class="font-headline uppercase tracking-[0.1em] text-[10px]"
+            >System Status</span
+          >
+        </a>
+        <a
+          class="flex items-center px-6 py-3 text-error/60 hover:text-error transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined mr-4 text-sm"
+            >power_settings_new</span
+          >
+          <span class="font-headline uppercase tracking-[0.1em] text-[10px]"
+            >Logout</span
+          >
+        </a>
+      </div>
+    </nav>
+    <!-- Main Content Canvas -->
+    <main class="ml-64 pt-24 px-8 pb-12">
+      <!-- Hero Header -->
+      <div class="relative mb-12">
+        <div class="absolute -left-4 top-0 w-1 h-12 bg-primary"></div>
+        <p
+          class="font-label uppercase tracking-[0.3em] text-primary text-[10px] mb-2"
+        >
+          FACULTY_PROFILE_ID: 8829-QX
+        </p>
+        <h1
+          class="font-headline text-5xl font-bold tracking-tighter text-on-surface uppercase mb-4"
+        >
+          DR. ARIS <span class="text-primary">VANCE</span>
+        </h1>
+        <div class="flex gap-4">
+          <span
+            class="bg-surface-container px-3 py-1 text-[10px] font-label tracking-widest text-secondary border border-secondary/20 uppercase"
+            >Quantum Heuristics</span
+          >
+          <span
+            class="bg-surface-container px-3 py-1 text-[10px] font-label tracking-widest text-on-surface-variant border border-outline-variant/30 uppercase"
+            >Senior Architect</span
+          >
+        </div>
+      </div>
+      <div class="grid grid-cols-12 gap-8">
+        <!-- Bio & Stats Section -->
+        <div class="col-span-12 lg:col-span-4 space-y-8">
+          <!-- Profile Image Module -->
+          <div class="relative group">
+            <div
+              class="absolute -top-2 -left-2 w-8 h-8 border-t border-l border-primary/40"
+            ></div>
+            <div
+              class="absolute -bottom-2 -right-2 w-8 h-8 border-b border-r border-primary/40"
+            ></div>
+            <div class="bg-surface-container-low p-2 chamfer-tr-bl">
+              <div class="aspect-square relative overflow-hidden">
+                <img
+                  alt="Faculty Portrait"
+                  class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700"
+                  data-alt="Intense dramatic portrait of an older academic male with sharp features, silver hair, wearing dark minimalist techwear in a low-lit industrial setting"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqYPNK4O0CivT3vpZboiXbbqusvoFP3kvfIicKef5yg3m-1O_QkrEQMMKrTYm3SzD0EnPhbUU2OvyQdaKtWUlxRojtHqg9GEf7gzM0ExRQ087D-XpqRHfXjLtNI6nzSW-Ahv9eGo-M8QX984ZyvdRleQZD0ovApbiy9mDJJWxPVKcnZPgRCNTRNZQq2tb-cobtdIn616uYlCxb-I7JjUgk9TelJxVmLeV_Pm41JYaZBqsL-TgUx_7OrHzM6E40mXwbb4z4NzR2VYv2"
+                />
+                <div
+                  class="absolute inset-0 scanline pointer-events-none opacity-20"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <!-- Bio Content -->
+          <div
+            class="bg-surface-container p-6 border-l-2 border-outline-variant/30 relative"
+          >
+            <h3
+              class="font-headline text-xs font-bold tracking-[0.2em] text-primary uppercase mb-4"
+            >
+              MISSION_OBJECTIVE
+            </h3>
+            <p
+              class="text-on-surface-variant text-sm leading-relaxed mb-6 font-body"
+            >
+              Specializing in the intersection of neural networks and
+              high-latency orbital data. Vance pioneered the "Nexus Shift"
+              protocol for distributed faculty-student collaboration across
+              deep-space network clusters.
+            </p>
+            <div
+              class="grid grid-cols-2 gap-4 border-t border-outline-variant/10 pt-6"
+            >
+              <div>
+                <p
+                  class="text-[9px] font-label text-outline uppercase tracking-widest"
+                >
+                  Experience
+                </p>
+                <p class="text-on-surface text-lg font-headline font-medium">
+                  14 CYCLES
+                </p>
+              </div>
+              <div>
+                <p
+                  class="text-[9px] font-label text-outline uppercase tracking-widest"
+                >
+                  Rating
+                </p>
+                <p class="text-primary text-lg font-headline font-medium">
+                  0.992_PHI
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Temporal Slots Selection -->
+        <div class="col-span-12 lg:col-span-8">
+          <div
+            class="bg-surface-container-low p-8 border border-outline-variant/10 relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 w-24 h-24 bg-primary/5 blur-3xl rounded-full"
+            ></div>
+            <div class="flex justify-between items-end mb-8">
+              <div>
+                <h2
+                  class="font-headline text-2xl font-bold tracking-tight uppercase text-on-surface"
+                >
+                  Temporal Slots
+                </h2>
+                <p
+                  class="text-xs font-label text-outline uppercase tracking-[0.15em]"
+                >
+                  Select available windows for synchronicity
+                </p>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-primary"></span>
+                <span
+                  class="text-[10px] font-label text-on-surface-variant uppercase"
+                  >Current Cycle: 2024.08.12</span
+                >
+              </div>
+            </div>
+            <!-- Scheduling Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <!-- Time Slot Card: Selected -->
+              <button
+                class="relative bg-surface-container-highest p-4 text-left border-l-4 border-primary shadow-[0_0_15px_rgba(0,240,240,0.2)] transition-all duration-300"
+              >
+                <div class="flex justify-between items-start mb-4">
+                  <span
+                    class="text-[10px] font-label tracking-tighter text-primary"
+                    >SLOT_01</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >check_circle</span
+                  >
+                </div>
+                <p class="font-headline text-lg font-bold text-on-surface">
+                  09:00
+                </p>
+                <p
+                  class="text-[10px] font-label text-outline-variant uppercase"
+                >
+                  Standard_SYNC
+                </p>
+              </button>
+              <!-- Time Slot Card: Available -->
+              <button
+                class="group relative bg-surface-container p-4 text-left border-l-4 border-transparent hover:border-primary/50 hover:bg-surface-container-high transition-all duration-300"
+              >
+                <div class="flex justify-between items-start mb-4">
+                  <span
+                    class="text-[10px] font-label tracking-tighter text-on-surface-variant"
+                    >SLOT_02</span
+                  >
+                </div>
+                <p
+                  class="font-headline text-lg font-bold text-on-surface opacity-70 group-hover:opacity-100"
+                >
+                  10:30
+                </p>
+                <p
+                  class="text-[10px] font-label text-outline-variant uppercase"
+                >
+                  Lecture_BURST
+                </p>
+              </button>
+              <!-- Time Slot Card: Available -->
+              <button
+                class="group relative bg-surface-container p-4 text-left border-l-4 border-transparent hover:border-primary/50 hover:bg-surface-container-high transition-all duration-300"
+              >
+                <div class="flex justify-between items-start mb-4">
+                  <span
+                    class="text-[10px] font-label tracking-tighter text-on-surface-variant"
+                    >SLOT_03</span
+                  >
+                </div>
+                <p
+                  class="font-headline text-lg font-bold text-on-surface opacity-70 group-hover:opacity-100"
+                >
+                  13:15
+                </p>
+                <p
+                  class="text-[10px] font-label text-outline-variant uppercase"
+                >
+                  Mentorship_I/O
+                </p>
+              </button>
+              <!-- Time Slot Card: Locked -->
+              <button
+                class="relative bg-surface-container-lowest opacity-40 p-4 text-left cursor-not-allowed"
+              >
+                <div class="flex justify-between items-start mb-4">
+                  <span class="text-[10px] font-label tracking-tighter"
+                    >SLOT_04</span
+                  >
+                  <span class="material-symbols-outlined text-xs">lock</span>
+                </div>
+                <p class="font-headline text-lg font-bold">14:00</p>
+                <p class="text-[10px] font-label uppercase">In_Meeting</p>
+              </button>
+              <!-- Additional slots to demonstrate grid -->
+              <button
+                class="group relative bg-surface-container p-4 text-left border-l-4 border-transparent hover:border-primary/50 hover:bg-surface-container-high transition-all duration-300"
+              >
+                <p
+                  class="font-headline text-lg font-bold text-on-surface opacity-70 group-hover:opacity-100"
+                >
+                  15:45
+                </p>
+                <p
+                  class="text-[10px] font-label text-outline-variant uppercase"
+                >
+                  Code_Review
+                </p>
+              </button>
+              <button
+                class="group relative bg-surface-container p-4 text-left border-l-4 border-transparent hover:border-primary/50 hover:bg-surface-container-high transition-all duration-300"
+              >
+                <p
+                  class="font-headline text-lg font-bold text-on-surface opacity-70 group-hover:opacity-100"
+                >
+                  17:00
+                </p>
+                <p
+                  class="text-[10px] font-label text-outline-variant uppercase"
+                >
+                  Rapid_PROTO
+                </p>
+              </button>
+            </div>
+            <!-- Tactical Bottom Action -->
+            <div
+              class="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-outline-variant/10 pt-8"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 bg-primary/10 flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >verified_user</span
+                  >
+                </div>
+                <div>
+                  <p
+                    class="text-[10px] font-label text-outline-variant uppercase tracking-widest"
+                  >
+                    Protocol status
+                  </p>
+                  <p class="text-xs font-bold text-on-surface uppercase">
+                    Encryption: AES-2048-ACTIVE
+                  </p>
+                </div>
+              </div>
+              <button
+                class="w-full md:w-auto px-10 py-4 font-headline font-bold text-on-primary bg-gradient-to-r from-primary to-primary-container uppercase tracking-widest chamfer-small shadow-[0_0_30px_rgba(0,240,240,0.3)] hover:scale-105 transition-transform"
+              >
+                INITIALIZE_SYNC
+              </button>
+            </div>
+          </div>
+          <!-- Secondary Info: Expertise Chips -->
+          <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div
+              class="bg-surface-container-high p-6 border-r-2 border-primary/20"
+            >
+              <h4
+                class="text-[10px] font-label tracking-[0.2em] text-outline-variant uppercase mb-4"
+              >
+                Core_Expertise
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-secondary uppercase"
+                  >Neural_Link</span
+                >
+                <span
+                  class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-secondary uppercase"
+                  >Flux_Control</span
+                >
+                <span
+                  class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-secondary uppercase"
+                  >Heuristics</span
+                >
+                <span
+                  class="px-2 py-1 bg-surface-container-highest text-[10px] font-label text-secondary uppercase"
+                  >Data_Mining</span
+                >
+              </div>
+            </div>
+            <div class="bg-surface-container-high p-6">
+              <h4
+                class="text-[10px] font-label tracking-[0.2em] text-outline-variant uppercase mb-4"
+              >
+                Archive_Metrics
+              </h4>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span
+                    class="text-[10px] font-label text-on-surface-variant uppercase"
+                    >Session_Completion</span
+                  >
+                  <span class="text-[10px] font-headline text-primary font-bold"
+                    >98.4%</span
+                  >
+                </div>
+                <div class="w-full h-1 bg-surface-container-lowest">
+                  <div class="w-[98.4%] h-full bg-primary"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Corner Branding Reticles (Decorative) -->
+    <div
+      class="fixed top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-primary opacity-20 pointer-events-none"
+    ></div>
+    <div
+      class="fixed top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-primary opacity-20 pointer-events-none"
+    ></div>
+    <div
+      class="fixed bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-primary opacity-20 pointer-events-none"
+    ></div>
+    <div
+      class="fixed bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-primary opacity-20 pointer-events-none"
+    ></div>
+  </body>
+</html>

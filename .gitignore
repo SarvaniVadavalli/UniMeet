@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+frontend/.env
+
+# Production Builds
+dist/
+build/
+frontend/dist/
+frontend/build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+debug.log
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.suo
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Project Specific
+Unimeet_temp.zip
+Unimeet_Extracted/
+backend/Unimeet_temp.zip
+backend/Unimeet_Extracted/
+backend/debug.log
+backend/Unimeet_Extracted.txt

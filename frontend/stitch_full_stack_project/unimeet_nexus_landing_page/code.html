@@ -1,0 +1,510 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;600;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-background": "#dee4dd",
+              "tertiary-fixed": "#ebddff",
+              "inverse-primary": "#006a6a",
+              "surface-variant": "#303632",
+              error: "#ffb4ab",
+              tertiary: "#faf1ff",
+              "on-tertiary-fixed-variant": "#5728a5",
+              "on-primary-fixed-variant": "#004f4f",
+              "surface-container-low": "#171d19",
+              "surface-container-lowest": "#0a0f0c",
+              "primary-fixed-dim": "#00dddd",
+              "on-surface": "#dee4dd",
+              "on-secondary-fixed-variant": "#551abb",
+              "on-secondary": "#3c0091",
+              secondary: "#d0bcff",
+              "tertiary-fixed-dim": "#d3bbff",
+              "inverse-surface": "#dee4dd",
+              "tertiary-container": "#e2d0ff",
+              "on-error-container": "#ffdad6",
+              "on-surface-variant": "#b9cac9",
+              "surface-tint": "#00dddd",
+              "on-tertiary": "#3f008d",
+              "on-error": "#690005",
+              "surface-container-high": "#252b27",
+              background: "#0f1511",
+              "on-primary": "#003737",
+              "on-secondary-fixed": "#23005c",
+              "on-tertiary-fixed": "#250059",
+              "secondary-fixed-dim": "#d0bcff",
+              "inverse-on-surface": "#2c322d",
+              outline: "#849493",
+              primary: "#c7fffe",
+              "on-secondary-container": "#c4abff",
+              "surface-container-highest": "#303632",
+              "primary-fixed": "#2cfbfb",
+              "outline-variant": "#3a4a49",
+              "on-tertiary-container": "#6e43be",
+              "surface-bright": "#343b36",
+              "error-container": "#93000a",
+              "secondary-container": "#571ebd",
+              "surface-container": "#1b211d",
+              "on-primary-container": "#006969",
+              "primary-container": "#00f0f0",
+              "surface-dim": "#0f1511",
+              "secondary-fixed": "#e9ddff",
+              surface: "#0f1511",
+              "on-primary-fixed": "#002020",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 300,
+          "GRAD" 0,
+          "opsz" 24;
+        color: #c7fffe;
+      }
+      .chamfer-card {
+        clip-path: polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%);
+      }
+      .scanline {
+        background: linear-gradient(
+          to bottom,
+          rgba(199, 255, 254, 0.03) 50%,
+          transparent 50%
+        );
+        background-size: 100% 4px;
+      }
+      .grid-pattern {
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(199, 255, 254, 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(199, 255, 254, 0.05) 1px,
+            transparent 1px
+          );
+        background-size: 40px 40px;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary"
+  >
+    <!-- TopNavBar -->
+    <nav
+      class="fixed top-0 w-full z-50 border-b border-[#c7fffe]/10 bg-[#0f1511]/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 max-w-full mx-auto"
+    >
+      <div
+        class="text-2xl font-bold tracking-widest text-[#c7fffe] drop-shadow-[0_0_10px_rgba(199,255,254,0.5)] font-['Space_Grotesk'] tracking-tighter uppercase"
+      >
+        UNIMEET NEXUS
+      </div>
+      <div class="hidden md:flex items-center gap-8">
+        <a
+          class="text-[#c7fffe] border-b-2 border-[#c7fffe] pb-1 font-['Space_Grotesk'] tracking-tighter uppercase"
+          href="#"
+          >Network</a
+        >
+        <a
+          class="text-[#c7fffe]/50 hover:text-[#c7fffe] transition-colors font-['Space_Grotesk'] tracking-tighter uppercase"
+          href="#"
+          >Protocols</a
+        >
+        <a
+          class="text-[#c7fffe]/50 hover:text-[#c7fffe] transition-colors font-['Space_Grotesk'] tracking-tighter uppercase"
+          href="#"
+          >Archives</a
+        >
+      </div>
+      <div class="flex items-center gap-4">
+        <button
+          class="px-6 py-2 text-[#c7fffe]/50 hover:text-[#c7fffe] transition-all duration-300 font-['Space_Grotesk'] tracking-tighter uppercase text-sm"
+        >
+          TERMINAL
+        </button>
+        <button
+          class="px-6 py-2 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold tracking-tighter uppercase active:scale-95 transition-all shadow-[0_0_15px_rgba(199,255,254,0.3)]"
+        >
+          INITIALIZE
+        </button>
+      </div>
+    </nav>
+    <!-- Main Content -->
+    <main class="relative pt-24">
+      <!-- Hero Section -->
+      <section
+        class="relative min-height-[921px] flex items-center px-8 md:px-16 overflow-hidden border-b border-outline-variant/20"
+      >
+        <div class="absolute inset-0 grid-pattern z-0"></div>
+        <div class="absolute inset-0 scanline z-10 pointer-events-none"></div>
+        <div
+          class="relative z-20 w-full max-w-6xl py-24 flex flex-col md:flex-row items-center gap-16"
+        >
+          <div class="w-full md:w-3/5">
+            <div class="flex items-center gap-2 mb-6">
+              <span class="w-12 h-px bg-primary"></span>
+              <span
+                class="text-primary font-label text-xs tracking-[0.3em] uppercase"
+                >Status: Online // Network Secure</span
+              >
+            </div>
+            <h1
+              class="font-headline text-5xl md:text-8xl font-extrabold tracking-tighter text-on-background leading-none mb-8"
+            >
+              UNIMEET NEXUS: THE
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container drop-shadow-[0_0_20px_rgba(199,255,254,0.4)]"
+                >INTELLIGENCE NETWORK</span
+              >
+              FOR ACADEMIA
+            </h1>
+            <p
+              class="text-on-surface-variant text-xl md:text-2xl max-w-2xl mb-12 font-light leading-relaxed"
+            >
+              Synchronize with world-class faculty. Secure your academic mission
+              through high-bandwidth collaborative protocols.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6">
+              <button
+                class="px-10 py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary font-black tracking-widest uppercase text-lg group relative overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(199,255,254,0.6)]"
+              >
+                <span class="relative z-10">INITIALIZE UPLINK</span>
+                <div
+                  class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                ></div>
+              </button>
+              <button
+                class="px-10 py-5 border border-primary/20 text-primary font-bold tracking-widest uppercase text-lg hover:bg-primary/5 transition-all flex items-center justify-center gap-3"
+              >
+                <span class="material-symbols-outlined">data_exploration</span>
+                VIEW TELEMETRY
+              </button>
+            </div>
+          </div>
+          <div class="w-full md:w-2/5 relative">
+            <div
+              class="aspect-square relative bg-surface-container-high chamfer-card overflow-hidden group"
+            >
+              <img
+                class="w-full h-full object-cover mix-blend-screen opacity-80 group-hover:scale-110 transition-transform duration-1000"
+                data-alt="High-tech futuristic data visualization with neon cyan lines, geometric obsidian structures, and atmospheric dark space lighting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk6XMqXlHEEh2jmnhzTVF9yJcbK03hnyhqoFYWtQC0iuxmQql8rsDbd5bs9r2iSnMkAB-3Jc3NWOFSegpzcbUCQtNslE3iLmpSE0bg-HhHT-f3D6YV-i8Q3miwXFYqwsJK7lxnRwkRxqAD_R7N-SkYpDON91mdeuVFA4WwdplIkLf5RZEfTygDNTfPPdUFEgm5H9Kb2_tjX3Lp3HnGbQxvqZiFWy7Lr8UOWIEMf6HgAUDdmOXQPTkhqXM0c6o0yk8eYmH6iIs-WuyQ"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"
+              ></div>
+              <div
+                class="absolute top-4 left-4 p-4 border-l-2 border-t-2 border-primary w-12 h-12"
+              ></div>
+              <div
+                class="absolute bottom-4 right-4 p-4 border-r-2 border-b-2 border-primary w-12 h-12"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Bento Grid Features Section -->
+      <section class="py-32 px-8 md:px-16 bg-surface-container-lowest relative">
+        <div class="max-w-7xl mx-auto">
+          <div class="flex justify-between items-end mb-20">
+            <div>
+              <h2
+                class="font-headline text-4xl md:text-6xl font-bold tracking-tight uppercase text-on-background"
+              >
+                Operational <span class="text-primary">Modules</span>
+              </h2>
+              <p
+                class="text-on-surface-variant font-label text-sm tracking-widest uppercase mt-4"
+              >
+                Core protocols for academic supremacy
+              </p>
+            </div>
+            <div
+              class="hidden md:block h-px flex-grow mx-12 bg-outline-variant/30"
+            ></div>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[700px]"
+          >
+            <!-- Tactical Scheduling -->
+            <div
+              class="md:col-span-7 bg-surface-container-low p-8 md:p-12 relative overflow-hidden chamfer-card group border border-outline-variant/10 hover:border-primary/30 transition-colors"
+            >
+              <div
+                class="absolute top-0 right-0 p-4 font-label text-[10px] text-primary/40 tracking-[0.2em]"
+              >
+                PROTOCOL: SCH_01
+              </div>
+              <div class="relative z-10 h-full flex flex-col justify-between">
+                <div>
+                  <div
+                    class="w-16 h-16 bg-primary-container/10 flex items-center justify-center mb-8 border border-primary/20"
+                  >
+                    <span
+                      class="material-symbols-outlined text-4xl"
+                      data-icon="schedule"
+                      >schedule</span
+                    >
+                  </div>
+                  <h3
+                    class="text-3xl font-headline font-bold mb-4 tracking-tighter uppercase"
+                  >
+                    Tactical Scheduling
+                  </h3>
+                  <p class="text-on-surface-variant text-lg max-w-md">
+                    Real-time availability telemetry. Sync your mission timeline
+                    with faculty windows in sub-millisecond precision.
+                  </p>
+                </div>
+                <div
+                  class="mt-12 bg-surface-container-highest/50 p-6 border-l-4 border-primary"
+                >
+                  <div
+                    class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-primary mb-4"
+                  >
+                    <span
+                      class="inline-block w-2 h-2 bg-primary animate-pulse"
+                    ></span>
+                    Active Signal Detected
+                  </div>
+                  <div class="grid grid-cols-4 gap-2">
+                    <div class="h-12 bg-primary/20"></div>
+                    <div class="h-12 bg-primary/40"></div>
+                    <div class="h-12 bg-primary/10"></div>
+                    <div class="h-12 bg-primary/60"></div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="absolute -right-20 -bottom-20 opacity-10 group-hover:opacity-20 transition-opacity"
+              >
+                <span
+                  class="material-symbols-outlined text-[300px]"
+                  data-icon="radar"
+                  >radar</span
+                >
+              </div>
+            </div>
+            <!-- Neural Collaboration -->
+            <div
+              class="md:col-span-5 bg-surface-container-high p-8 md:p-12 relative overflow-hidden chamfer-card border border-outline-variant/10 hover:border-primary/30 transition-colors"
+            >
+              <div
+                class="absolute top-0 right-0 p-4 font-label text-[10px] text-primary/40 tracking-[0.2em]"
+              >
+                PROTOCOL: COL_02
+              </div>
+              <div class="relative z-10 flex flex-col h-full">
+                <div
+                  class="w-16 h-16 bg-primary-container/10 flex items-center justify-center mb-8 border border-primary/20"
+                >
+                  <span
+                    class="material-symbols-outlined text-4xl"
+                    data-icon="psychology"
+                    >psychology</span
+                  >
+                </div>
+                <h3
+                  class="text-3xl font-headline font-bold mb-4 tracking-tighter uppercase"
+                >
+                  Neural Collaboration
+                </h3>
+                <p class="text-on-surface-variant text-lg mb-8">
+                  Seamless student-faculty synchronization. Distributed
+                  brain-trust for complex problem-solving environments.
+                </p>
+                <div class="mt-auto relative">
+                  <img
+                    class="w-full h-48 object-cover chamfer-card mix-blend-lighten opacity-60"
+                    data-alt="Microscopic view of neural pathways glowing in cyan and purple on a dark background, representing digital synchronization"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcuqyM_sekGHDhxkdcDgMUSX_H9I1EthGV6Bo3oTG-Vn2YowYA5s6Rkx1_h1PqSwVyInQUmr1OZc6lJJQkf7Iw5YrDMP2rhDZb92Pv7aJtRw2vqBUlCdiEwiXtvGnp7_R14-Ul2ff8KF59x8D2eeIEC1-6ITl6tbNLYsOu5nPNIf4hO6Z_hGbTSOnuWH8MgcWCGGxFSQXKbZLIdFxkQdXh60KVRamQp9H-Gwc4dSTi7XC2H0lPmivuxN1yZ6wruYePedUOQUm9EV35"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-surface-container-high to-transparent"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <!-- Secure Archives -->
+            <div
+              class="md:col-span-12 bg-gradient-to-r from-surface-container-low to-surface-container p-8 md:p-12 relative overflow-hidden chamfer-card border border-outline-variant/10 hover:border-primary/30 transition-colors"
+            >
+              <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <div
+                    class="font-label text-[10px] text-primary/40 tracking-[0.2em] mb-4"
+                  >
+                    PROTOCOL: ARC_03
+                  </div>
+                  <div
+                    class="w-16 h-16 bg-primary-container/10 flex items-center justify-center mb-8 border border-primary/20"
+                  >
+                    <span
+                      class="material-symbols-outlined text-4xl"
+                      data-icon="encrypted"
+                      >encrypted</span
+                    >
+                  </div>
+                  <h3
+                    class="text-3xl font-headline font-bold mb-4 tracking-tighter uppercase"
+                  >
+                    Secure Archives
+                  </h3>
+                  <p class="text-on-surface-variant text-lg max-w-xl">
+                    Encrypted mission logs of every encounter. Your academic
+                    intellectual property is stored in quantum-hardened
+                    localized silos.
+                  </p>
+                  <button
+                    class="mt-8 text-primary font-label text-sm tracking-widest uppercase flex items-center gap-2 group"
+                  >
+                    ACCESS LOGS
+                    <span
+                      class="material-symbols-outlined group-hover:translate-x-2 transition-transform"
+                      >arrow_forward</span
+                    >
+                  </button>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                  <div
+                    class="bg-surface-container-highest p-4 text-center border-t-2 border-outline-variant"
+                  >
+                    <div class="text-primary font-headline text-3xl font-bold">
+                      256-BIT
+                    </div>
+                    <div
+                      class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1"
+                    >
+                      Encryption
+                    </div>
+                  </div>
+                  <div
+                    class="bg-surface-container-highest p-4 text-center border-t-2 border-primary"
+                  >
+                    <div class="text-primary font-headline text-3xl font-bold">
+                      99.9%
+                    </div>
+                    <div
+                      class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1"
+                    >
+                      Uptime
+                    </div>
+                  </div>
+                  <div
+                    class="bg-surface-container-highest p-4 text-center border-t-2 border-outline-variant"
+                  >
+                    <div class="text-primary font-headline text-3xl font-bold">
+                      ZERO
+                    </div>
+                    <div
+                      class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1"
+                    >
+                      Breaches
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- CTA / Final Phase Section -->
+      <section class="relative py-40 overflow-hidden">
+        <div class="absolute inset-0 grid-pattern opacity-20"></div>
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[500px] bg-primary/5 blur-[120px] rounded-full"
+        ></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-8 text-center">
+          <div class="inline-block border border-primary/40 px-4 py-1 mb-8">
+            <span
+              class="text-primary font-label text-[10px] tracking-[0.4em] uppercase"
+              >Ready for Deployment</span
+            >
+          </div>
+          <h2
+            class="font-headline text-5xl md:text-7xl font-black text-on-background tracking-tighter uppercase mb-8 leading-tight"
+          >
+            ESTABLISH YOUR
+            <span class="text-primary">NEXUS CONNECTION</span> TODAY
+          </h2>
+          <p
+            class="text-on-surface-variant text-xl mb-12 max-w-2xl mx-auto font-light"
+          >
+            Join the elite tier of academic synchronization. Deployment
+            available across all terrestrial and orbital research hubs.
+          </p>
+          <div class="flex flex-col md:flex-row justify-center gap-6">
+            <button
+              class="px-12 py-6 bg-primary text-on-primary font-black tracking-[0.2em] uppercase text-xl chamfer-card hover:shadow-[0_0_40px_rgba(199,255,254,0.5)] transition-all active:scale-95"
+            >
+              INITIALIZE UPLINK
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full border-t border-[#c7fffe]/10 py-12 bg-[#0f1511]">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center px-12 gap-6 max-w-full mx-auto"
+      >
+        <div
+          class="text-lg font-black text-[#c7fffe] font-headline tracking-tighter"
+        >
+          UNIMEET NEXUS
+        </div>
+        <div class="flex gap-8">
+          <a
+            class="text-[#c7fffe]/40 hover:text-[#c7fffe] transition-all hover:tracking-[0.3em] font-['Inter'] text-[10px] tracking-[0.2em] uppercase"
+            href="#"
+            >Neural Link</a
+          >
+          <a
+            class="text-[#c7fffe]/40 hover:text-[#c7fffe] transition-all hover:tracking-[0.3em] font-['Inter'] text-[10px] tracking-[0.2em] uppercase"
+            href="#"
+            >Security Clearance</a
+          >
+          <a
+            class="text-[#c7fffe]/40 hover:text-[#c7fffe] transition-all hover:tracking-[0.3em] font-['Inter'] text-[10px] tracking-[0.2em] uppercase"
+            href="#"
+            >Transmission Logs</a
+          >
+        </div>
+        <div
+          class="text-[#c7fffe] font-['Inter'] text-[10px] tracking-[0.2em] uppercase opacity-60"
+        >
+          © 2124 UNIMEET NEXUS | CORE DIRECTIVE
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

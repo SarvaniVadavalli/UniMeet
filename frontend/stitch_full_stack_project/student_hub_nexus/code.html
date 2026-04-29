@@ -1,0 +1,610 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>UNIMEET NEXUS | Student Command Center</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#303632",
+              "outline-variant": "#3a4a49",
+              "inverse-surface": "#dee4dd",
+              "surface-tint": "#00dddd",
+              "on-surface": "#dee4dd",
+              "on-primary": "#003737",
+              "secondary-container": "#571ebd",
+              error: "#ffb4ab",
+              "surface-container": "#1b211d",
+              "error-container": "#93000a",
+              "on-secondary": "#3c0091",
+              outline: "#849493",
+              surface: "#0f1511",
+              "surface-dim": "#0f1511",
+              "on-background": "#dee4dd",
+              "surface-container-low": "#171d19",
+              "on-tertiary-container": "#6e43be",
+              primary: "#c7fffe",
+              "inverse-on-surface": "#2c322d",
+              secondary: "#d0bcff",
+              "surface-bright": "#343b36",
+              "on-primary-fixed": "#002020",
+              "surface-container-lowest": "#0a0f0c",
+              "inverse-primary": "#006a6a",
+              "on-tertiary-fixed": "#250059",
+              tertiary: "#faf1ff",
+              "primary-fixed": "#2cfbfb",
+              "on-tertiary": "#3f008d",
+              "on-secondary-container": "#c4abff",
+              "on-error": "#690005",
+              "primary-fixed-dim": "#00dddd",
+              "secondary-fixed-dim": "#d0bcff",
+              "surface-variant": "#303632",
+              "secondary-fixed": "#e9ddff",
+              "on-secondary-fixed-variant": "#551abb",
+              "on-error-container": "#ffdad6",
+              "tertiary-container": "#e2d0ff",
+              "surface-container-high": "#252b27",
+              "on-surface-variant": "#b9cac9",
+              "primary-container": "#00f0f0",
+              "on-tertiary-fixed-variant": "#5728a5",
+              "on-secondary-fixed": "#23005c",
+              "on-primary-container": "#006969",
+              "on-primary-fixed-variant": "#004f4f",
+              background: "#0f1511",
+              "tertiary-fixed-dim": "#d3bbff",
+              "tertiary-fixed": "#ebddff",
+            },
+            borderRadius: {
+              DEFAULT: "0px",
+              lg: "0px",
+              xl: "0px",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .chamfer-tr-bl {
+        clip-path: polygon(
+          0 0,
+          calc(100% - 20px) 0,
+          100% 20px,
+          100% 100%,
+          20px 100%,
+          0 calc(100% - 20px)
+        );
+      }
+      .chamfer-btn {
+        clip-path: polygon(
+          0 0,
+          calc(100% - 12px) 0,
+          100% 12px,
+          100% 100%,
+          12px 100%,
+          0 calc(100% - 12px)
+        );
+      }
+      .scanline-overlay {
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(199, 255, 254, 0.03) 50%
+        );
+        background-size: 100% 4px;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary"
+  >
+    <!-- Top Navigation -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0f1511]/80 backdrop-blur-xl bg-gradient-to-b from-[#1a221d] to-transparent shadow-[0_0_20px_rgba(0,240,240,0.15)]"
+    >
+      <div class="flex items-center gap-8">
+        <span
+          class="text-2xl font-bold tracking-widest text-[#c7fffe] uppercase font-['Space_Grotesk']"
+          >UNIMEET NEXUS</span
+        >
+        <div class="hidden md:flex gap-6 items-center">
+          <div class="relative">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary/50 text-sm"
+              >search</span
+            >
+            <input
+              class="bg-surface-container-highest border-none focus:ring-1 focus:ring-primary text-xs font-label uppercase tracking-widest pl-10 pr-4 py-2 w-64"
+              placeholder="QUERY SYSTEM..."
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <button
+          class="p-2 text-[#c7fffe]/50 hover:text-[#c7fffe] hover:bg-[#c7fffe]/10 transition-all duration-300"
+        >
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <button
+          class="p-2 text-[#c7fffe]/50 hover:text-[#c7fffe] hover:bg-[#c7fffe]/10 transition-all duration-300"
+        >
+          <span class="material-symbols-outlined">settings</span>
+        </button>
+        <div
+          class="w-10 h-10 bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/30"
+        >
+          <img
+            alt="User Telemetry Profile"
+            data-alt="Close up portrait of a futuristic pilot wearing high-tech sleek glass visor and tactical gear, dark cinematic lighting with cyan highlights"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxzhwWjwXFd50Vmx3m_rct4z_tiHqwXDgTTx2M6d9qWcNFvl5AkwQmriZwXHl9Mdf_upsVjSF9vfE3IMH-eXw0MHPW5CtTyXznzW8HDp8-VG8eXaSBXj0xWGzJz3gaFEIqBfZ1Yh-08f4RR_DoIqsE996HlhIETHyqi9QZHAiJRlebRgkj4TwnICXA8aWpszy4qSgw0Yc77zF--pdQffbAKrf1b-CBnuQ3onrmZffp8cAa61aMEoFDkVP75A0PiApq3_KmFEd-1erR"
+          />
+        </div>
+      </div>
+    </nav>
+    <!-- Side Navigation -->
+    <aside
+      class="fixed left-0 top-0 h-screen w-64 flex flex-col pt-20 pb-6 z-40 bg-[#0f1511] bg-[#1a221d]"
+    >
+      <div class="flex-1 space-y-1">
+        <a
+          class="flex items-center gap-4 px-6 py-4 text-[#c7fffe] border-l-4 border-[#00f0f0] bg-gradient-to-r from-[#00f0f0]/10 to-transparent scale-[0.98] transition-transform duration-150"
+          href="#"
+        >
+          <span class="material-symbols-outlined">grid_view</span>
+          <span
+            class="font-['Space_Grotesk'] uppercase tracking-[0.1em] text-xs"
+            >Dashboard</span
+          >
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-4 text-[#c7fffe]/40 border-l-4 border-transparent hover:bg-[#c7fffe]/5 hover:text-[#c7fffe] transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined">travel_explore</span>
+          <span
+            class="font-['Space_Grotesk'] uppercase tracking-[0.1em] text-xs"
+            >Faculty Discovery</span
+          >
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-4 text-[#c7fffe]/40 border-l-4 border-transparent hover:bg-[#c7fffe]/5 hover:text-[#c7fffe] transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined">event_upcoming</span>
+          <span
+            class="font-['Space_Grotesk'] uppercase tracking-[0.1em] text-xs"
+            >Schedulers</span
+          >
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-4 text-[#c7fffe]/40 border-l-4 border-transparent hover:bg-[#c7fffe]/5 hover:text-[#c7fffe] transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined">inventory_2</span>
+          <span
+            class="font-['Space_Grotesk'] uppercase tracking-[0.1em] text-xs"
+            >Archive</span
+          >
+        </a>
+      </div>
+      <div class="px-6 space-y-1 border-t border-outline-variant/10 pt-4">
+        <a
+          class="flex items-center gap-4 py-2 text-[#c7fffe]/40 hover:text-[#c7fffe] transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-sm">account_tree</span>
+          <span
+            class="font-['Space_Grotesk'] uppercase tracking-[0.1em] text-[10px]"
+            >System Status</span
+          >
+        </a>
+        <a
+          class="flex items-center gap-4 py-2 text-[#c7fffe]/40 hover:text-[#c7fffe] transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-sm"
+            >power_settings_new</span
+          >
+          <span
+            class="font-['Space_Grotesk'] uppercase tracking-[0.1em] text-[10px]"
+            >Logout</span
+          >
+        </a>
+      </div>
+    </aside>
+    <!-- Main Content Canvas -->
+    <main class="pl-64 pt-16 min-h-screen relative overflow-hidden">
+      <div
+        class="scanline-overlay absolute inset-0 pointer-events-none opacity-50"
+      ></div>
+      <div class="p-8 max-w-7xl mx-auto space-y-8 relative z-10">
+        <!-- Header Section -->
+        <header class="flex justify-between items-end">
+          <div class="space-y-1">
+            <p
+              class="font-label text-primary uppercase tracking-[0.3em] text-[10px]"
+            >
+              NEXUS_OPERATOR_01 // CORE_DASHBOARD
+            </p>
+            <h1
+              class="text-5xl font-headline font-bold tracking-tight text-on-surface"
+            >
+              COMMAND CENTER
+            </h1>
+          </div>
+          <button
+            class="chamfer-btn bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-4 font-headline font-bold uppercase tracking-widest flex items-center gap-3 hover:shadow-[0_0_20px_rgba(0,240,240,0.4)] transition-all group"
+          >
+            <span
+              class="material-symbols-outlined transition-transform group-hover:rotate-90"
+              >add</span
+            >
+            Book New Appointment
+          </button>
+        </header>
+        <!-- Stats Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Stat Card 1 -->
+          <div
+            class="surface-container-low bg-surface-container-low/70 backdrop-blur-xl p-8 chamfer-tr-bl border-l border-primary/20 relative group"
+          >
+            <div
+              class="absolute top-0 right-0 w-8 h-8 border-t border-r border-primary/40"
+            ></div>
+            <div class="space-y-4">
+              <div class="flex justify-between items-start">
+                <span
+                  class="material-symbols-outlined text-primary text-3xl"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >sensors</span
+                >
+                <span
+                  class="font-label text-[10px] text-primary/40 uppercase tracking-widest"
+                  >Live_Link</span
+                >
+              </div>
+              <div>
+                <p class="text-4xl font-headline font-bold text-on-surface">
+                  12
+                </p>
+                <p
+                  class="font-label text-xs uppercase tracking-widest text-on-surface-variant"
+                >
+                  Active Appointments
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Stat Card 2 -->
+          <div
+            class="surface-container-low bg-surface-container-low/70 backdrop-blur-xl p-8 chamfer-tr-bl border-l border-secondary/20 relative group"
+          >
+            <div
+              class="absolute top-0 right-0 w-8 h-8 border-t border-r border-secondary/40"
+            ></div>
+            <div class="space-y-4">
+              <div class="flex justify-between items-start">
+                <span class="material-symbols-outlined text-secondary text-3xl"
+                  >pending_actions</span
+                >
+                <span
+                  class="font-label text-[10px] text-secondary/40 uppercase tracking-widest"
+                  >Validation_Queue</span
+                >
+              </div>
+              <div>
+                <p class="text-4xl font-headline font-bold text-on-surface">
+                  04
+                </p>
+                <p
+                  class="font-label text-xs uppercase tracking-widest text-on-surface-variant"
+                >
+                  Pending Approvals
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Stat Card 3 -->
+          <div
+            class="surface-container-low bg-surface-container-low/70 backdrop-blur-xl p-8 chamfer-tr-bl border-l border-primary/20 relative group"
+          >
+            <div
+              class="absolute top-0 right-0 w-8 h-8 border-t border-r border-primary/40"
+            ></div>
+            <div class="space-y-4">
+              <div class="flex justify-between items-start">
+                <span class="material-symbols-outlined text-primary text-3xl"
+                  >token</span
+                >
+                <span
+                  class="font-label text-[10px] text-primary/40 uppercase tracking-widest"
+                  >Resource_Pool</span
+                >
+              </div>
+              <div>
+                <p class="text-4xl font-headline font-bold text-on-surface">
+                  128.5
+                </p>
+                <p
+                  class="font-label text-xs uppercase tracking-widest text-on-surface-variant"
+                >
+                  Total Credits
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Main Interactive Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Upcoming Sync Operations -->
+          <section class="lg:col-span-2 space-y-6">
+            <div class="flex items-center gap-4">
+              <h2
+                class="font-headline text-xl font-bold tracking-widest uppercase"
+              >
+                Upcoming Sync Operations
+              </h2>
+              <div
+                class="h-px flex-1 bg-gradient-to-r from-outline-variant/30 to-transparent"
+              ></div>
+            </div>
+            <div class="space-y-4">
+              <!-- Sync Item 1 -->
+              <div
+                class="bg-surface-container-high/40 border-l-2 border-primary p-6 flex items-center justify-between group hover:bg-surface-container-high/60 transition-colors"
+              >
+                <div class="flex items-center gap-6">
+                  <div
+                    class="w-12 h-12 bg-surface-container-highest flex flex-col items-center justify-center font-headline text-primary border border-primary/20"
+                  >
+                    <span class="text-lg font-bold">24</span>
+                    <span class="text-[8px] uppercase tracking-tighter"
+                      >OCT</span
+                    >
+                  </div>
+                  <div>
+                    <h3
+                      class="font-headline font-bold text-on-surface group-hover:text-primary transition-colors"
+                    >
+                      NEURAL ARCHITECTURE REVIEW
+                    </h3>
+                    <p
+                      class="text-xs text-on-surface-variant/60 font-label uppercase tracking-widest"
+                    >
+                      Dr. Aris Thorne • Sector 7-G • 14:00 GST
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span
+                    class="px-3 py-1 text-[10px] font-label font-bold uppercase tracking-widest bg-primary/10 text-primary border border-primary/20"
+                    >Active_Link</span
+                  >
+                  <button
+                    class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors"
+                  >
+                    more_vert
+                  </button>
+                </div>
+              </div>
+              <!-- Sync Item 2 -->
+              <div
+                class="bg-surface-container-high/40 border-l-2 border-outline-variant/30 p-6 flex items-center justify-between group hover:bg-surface-container-high/60 transition-colors"
+              >
+                <div class="flex items-center gap-6">
+                  <div
+                    class="w-12 h-12 bg-surface-container-highest flex flex-col items-center justify-center font-headline text-on-surface-variant/40 border border-outline-variant/10"
+                  >
+                    <span class="text-lg font-bold">26</span>
+                    <span class="text-[8px] uppercase tracking-tighter"
+                      >OCT</span
+                    >
+                  </div>
+                  <div>
+                    <h3
+                      class="font-headline font-bold text-on-surface group-hover:text-primary transition-colors"
+                    >
+                      QUANTUM ENTANGLEMENT LAB
+                    </h3>
+                    <p
+                      class="text-xs text-on-surface-variant/60 font-label uppercase tracking-widest"
+                    >
+                      Professor Xyla • Orbital Hub • 09:30 GST
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span
+                    class="px-3 py-1 text-[10px] font-label font-bold uppercase tracking-widest bg-outline-variant/10 text-on-surface-variant border border-outline-variant/20"
+                    >Standby</span
+                  >
+                  <button
+                    class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors"
+                  >
+                    more_vert
+                  </button>
+                </div>
+              </div>
+              <!-- Sync Item 3 -->
+              <div
+                class="bg-surface-container-high/40 border-l-2 border-outline-variant/30 p-6 flex items-center justify-between group hover:bg-surface-container-high/60 transition-colors"
+              >
+                <div class="flex items-center gap-6">
+                  <div
+                    class="w-12 h-12 bg-surface-container-highest flex flex-col items-center justify-center font-headline text-on-surface-variant/40 border border-outline-variant/10"
+                  >
+                    <span class="text-lg font-bold">27</span>
+                    <span class="text-[8px] uppercase tracking-tighter"
+                      >OCT</span
+                    >
+                  </div>
+                  <div>
+                    <h3
+                      class="font-headline font-bold text-on-surface group-hover:text-primary transition-colors"
+                    >
+                      XENOLINGUISTICS SEMINAR
+                    </h3>
+                    <p
+                      class="text-xs text-on-surface-variant/60 font-label uppercase tracking-widest"
+                    >
+                      Diplomat K'Thar • Comm-Relay 4 • 11:00 GST
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span
+                    class="px-3 py-1 text-[10px] font-label font-bold uppercase tracking-widest bg-outline-variant/10 text-on-surface-variant border border-outline-variant/20"
+                    >Standby</span
+                  >
+                  <button
+                    class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors"
+                  >
+                    more_vert
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Sidebar Modules -->
+          <aside class="space-y-8">
+            <!-- Data Telemetry Card -->
+            <div
+              class="bg-surface-container p-6 border-t-2 border-primary/40 space-y-4"
+            >
+              <div class="flex justify-between items-center">
+                <h3
+                  class="font-headline text-sm font-bold uppercase tracking-widest text-primary"
+                >
+                  System Telemetry
+                </h3>
+                <span
+                  class="animate-pulse w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#c7fffe]"
+                ></span>
+              </div>
+              <div class="space-y-4">
+                <div class="space-y-1">
+                  <div
+                    class="flex justify-between text-[10px] font-label uppercase tracking-widest text-on-surface-variant/60"
+                  >
+                    <span>Sync_Capacity</span>
+                    <span>84%</span>
+                  </div>
+                  <div class="h-1 bg-surface-container-highest">
+                    <div class="h-full bg-primary w-[84%]"></div>
+                  </div>
+                </div>
+                <div class="space-y-1">
+                  <div
+                    class="flex justify-between text-[10px] font-label uppercase tracking-widest text-on-surface-variant/60"
+                  >
+                    <span>Neural_Load</span>
+                    <span>22%</span>
+                  </div>
+                  <div class="h-1 bg-surface-container-highest">
+                    <div class="h-full bg-secondary w-[22%]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Visual Feed -->
+            <div class="relative overflow-hidden group">
+              <img
+                alt="Campus Telemetry"
+                class="w-full grayscale group-hover:grayscale-0 transition-all duration-700"
+                data-alt="Breathtaking architectural view of a futuristic sci-fi university campus at night, obsidian buildings with neon cyan glowing paths and floating holographic displays"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuButJIooODiun8Ifi1l6A0HCp3ErLZJojJLOlsoT6DrQtFw1ccej0x_E3gQyFWn7k32pUny3ZZpzkX2t2JQL1WyVjMItaIK0n-w5PTT3KhsnbTwZKxQu5eW6n8Pv5ucSwtlyDBySrxOtN04tFLAdWcImSH1IMbISamQhY51eVkG458pFkHTwEPGP00zB4TykLRjMWhMongGz2F48Wfco4JoNB79D4bXGNeGg264WtDEF4MDu3iDuFS_OgnSDrjq_u_OgsZwhdsOeo7G"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"
+              ></div>
+              <div class="absolute bottom-4 left-4">
+                <p
+                  class="font-label text-[10px] text-primary uppercase tracking-[0.4em] font-bold"
+                >
+                  LIVE_FEED // SECTOR_04
+                </p>
+              </div>
+              <div class="absolute top-4 right-4 flex gap-2">
+                <div class="w-1 h-1 bg-primary"></div>
+                <div class="w-1 h-1 bg-primary"></div>
+                <div class="w-1 h-1 bg-primary/20"></div>
+              </div>
+            </div>
+            <!-- Advisory Alert -->
+            <div
+              class="bg-error-container/20 p-6 border-l-2 border-error space-y-2"
+            >
+              <div class="flex items-center gap-2 text-error">
+                <span class="material-symbols-outlined text-sm">warning</span>
+                <span
+                  class="font-headline text-[10px] font-bold uppercase tracking-widest"
+                  >Urgent Advisory</span
+                >
+              </div>
+              <p
+                class="text-xs text-on-error-container/80 font-label leading-relaxed"
+              >
+                Neural Sync for session "Quantum Ethics" requires local
+                validation. Update your biometric hash before 18:00 GST.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <!-- Bottom Navigation (Mobile Only) -->
+    <nav
+      class="md:hidden fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-xl flex justify-around items-center h-16 z-50 border-t border-outline-variant/10"
+    >
+      <button class="flex flex-col items-center gap-1 text-primary">
+        <span class="material-symbols-outlined">grid_view</span>
+        <span class="text-[8px] uppercase tracking-widest font-label"
+          >Core</span
+        >
+      </button>
+      <button class="flex flex-col items-center gap-1 text-on-surface-variant">
+        <span class="material-symbols-outlined">travel_explore</span>
+        <span class="text-[8px] uppercase tracking-widest font-label"
+          >Search</span
+        >
+      </button>
+      <button class="flex flex-col items-center gap-1 text-on-surface-variant">
+        <span class="material-symbols-outlined">event_upcoming</span>
+        <span class="text-[8px] uppercase tracking-widest font-label"
+          >Syncs</span
+        >
+      </button>
+      <button class="flex flex-col items-center gap-1 text-on-surface-variant">
+        <span class="material-symbols-outlined">inventory_2</span>
+        <span class="text-[8px] uppercase tracking-widest font-label"
+          >Files</span
+        >
+      </button>
+    </nav>
+  </body>
+</html>

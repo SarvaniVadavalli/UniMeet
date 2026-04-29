@@ -1,0 +1,711 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#343b36",
+              "secondary-fixed": "#e9ddff",
+              "primary-container": "#00f0f0",
+              primary: "#c7fffe",
+              "on-secondary": "#3c0091",
+              "on-error-container": "#ffdad6",
+              "on-primary": "#003737",
+              "error-container": "#93000a",
+              outline: "#849493",
+              "inverse-primary": "#006a6a",
+              "inverse-on-surface": "#2c322d",
+              "on-surface-variant": "#b9cac9",
+              "secondary-fixed-dim": "#d0bcff",
+              error: "#ffb4ab",
+              "tertiary-fixed-dim": "#d3bbff",
+              "surface-variant": "#303632",
+              tertiary: "#faf1ff",
+              "on-primary-fixed": "#002020",
+              "on-background": "#dee4dd",
+              "on-secondary-fixed": "#23005c",
+              "tertiary-fixed": "#ebddff",
+              "on-tertiary-container": "#6e43be",
+              "inverse-surface": "#dee4dd",
+              "primary-fixed": "#2cfbfb",
+              "surface-container": "#1b211d",
+              "on-primary-fixed-variant": "#004f4f",
+              "on-surface": "#dee4dd",
+              "surface-container-low": "#171d19",
+              "secondary-container": "#571ebd",
+              "surface-tint": "#00dddd",
+              secondary: "#d0bcff",
+              "on-primary-container": "#006969",
+              "surface-container-high": "#252b27",
+              "primary-fixed-dim": "#00dddd",
+              "on-tertiary-fixed-variant": "#5728a5",
+              "on-tertiary": "#3f008d",
+              surface: "#0f1511",
+              "on-tertiary-fixed": "#250059",
+              "tertiary-container": "#e2d0ff",
+              "surface-dim": "#0f1511",
+              "surface-container-lowest": "#0a0f0c",
+              "outline-variant": "#3a4a49",
+              "on-secondary-fixed-variant": "#551abb",
+              "on-error": "#690005",
+              "surface-container-highest": "#303632",
+              background: "#0f1511",
+              "on-secondary-container": "#c4abff",
+            },
+            borderRadius: {
+              DEFAULT: "0px",
+              lg: "0px",
+              xl: "0px",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .clip-path-chamfer-bottom {
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% calc(100% - 15px),
+          calc(100% - 15px) 100%,
+          0 100%
+        );
+      }
+      .clip-path-chamfer-br {
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% calc(100% - 12px),
+          calc(100% - 12px) 100%,
+          0 100%
+        );
+      }
+      .clip-path-chamfer-tl {
+        clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 12px);
+      }
+      .scanline {
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(199, 255, 254, 0.03) 50%
+        );
+        background-size: 100% 4px;
+      }
+      .tonal-shift {
+        background-color: #1a1f1b;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background font-body selection:bg-primary/30"
+  >
+    <!-- Top Navigation Bar -->
+    <nav
+      class="bg-[#0f1511]/80 backdrop-blur-xl fixed top-0 w-full z-50 clip-path-chamfer-bottom border-b border-[#c7fffe]/10 flex justify-between items-center w-full px-8 h-16 shadow-[0_4px_20px_rgba(0,240,240,0.05)]"
+    >
+      <div
+        class="text-2xl font-bold tracking-widest text-[#c7fffe] drop-shadow-[0_0_10px_rgba(199,255,254,0.3)] font-['Space_Grotesk'] uppercase"
+      >
+        VOID_NEXUS_OS
+      </div>
+      <div
+        class="hidden md:flex gap-8 items-center font-['Space_Grotesk'] tracking-tighter uppercase"
+      >
+        <a
+          class="text-[#c7fffe]/50 hover:text-[#c7fffe]/80 transition-colors text-[14px]"
+          href="#"
+          >TELEMETRY</a
+        >
+        <a
+          class="text-[#c7fffe]/50 hover:text-[#c7fffe]/80 transition-colors text-[14px]"
+          href="#"
+          >COMS</a
+        >
+        <a
+          class="text-[#c7fffe]/50 hover:text-[#c7fffe]/80 transition-colors text-[14px]"
+          href="#"
+          >UPLINK</a
+        >
+      </div>
+      <div class="flex items-center gap-6">
+        <div class="flex gap-4">
+          <span
+            class="material-symbols-outlined text-[#c7fffe] cursor-pointer hover:bg-[#c7fffe]/5 p-1 transition-all"
+            data-icon="notifications_paused"
+            >notifications_paused</span
+          >
+          <span
+            class="material-symbols-outlined text-[#c7fffe] cursor-pointer hover:bg-[#c7fffe]/5 p-1 transition-all"
+            data-icon="account_tree"
+            >account_tree</span
+          >
+        </div>
+        <img
+          alt="User Bio-Metric Avatar"
+          class="w-8 h-8 border border-primary/30"
+          data-alt="High-tech futuristic avatar of a faculty officer with glowing teal ocular implants and tactical collar"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzrKgCCLa8VJNdoU2MM16ZyLTaTaOG293eb3Po8C_lgOl1FDsPzIEBLhTJF4Vdl92rvd3DGJHo5Geuuvt9TUBkCDleUEnMOVaBNCO5vWBJPvOR2rjOvD9m1g9hSAa6-RWq4wkE58VA-DPYn2lC6-zMjNt0neLeiJpvsBh8H0M1wNLZDNHE381-9bHQlNwe2jOvJj7A0aXDAvOScPYqJXj_v_pnl2DRsVljljYIv7Q5j3RuORy4k-WdU4atj1AQuEOHUEAuW_OcQP5y"
+        />
+      </div>
+    </nav>
+    <!-- Side Navigation Bar -->
+    <aside
+      class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-[#0f1511] border-r border-[#c7fffe]/10 flex flex-col py-6 z-40 hidden md:flex font-['Space_Grotesk'] text-[12px] tracking-[0.1em] uppercase"
+    >
+      <div class="px-6 mb-8">
+        <div class="text-[#c7fffe] font-bold text-sm">FACULTY_COMMAND</div>
+        <div class="text-[#c7fffe]/40 text-[10px]">SECTOR_07</div>
+      </div>
+      <div class="flex-1 space-y-1">
+        <a
+          class="flex items-center gap-4 px-6 py-3 text-[#c7fffe]/40 hover:bg-[#c7fffe]/5 hover:text-[#c7fffe]/70 hover:border-l-4 hover:border-[#c7fffe]/30 transition-all duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-lg" data-icon="terminal"
+            >terminal</span
+          >
+          <span>COMMAND</span>
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-3 text-[#c7fffe]/40 hover:bg-[#c7fffe]/5 hover:text-[#c7fffe]/70 hover:border-l-4 hover:border-[#c7fffe]/30 transition-all duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-lg" data-icon="grid_view"
+            >grid_view</span
+          >
+          <span>SLOTS</span>
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-3 bg-[#c7fffe]/10 text-[#c7fffe] border-l-4 border-[#c7fffe] shadow-[inset_0_0_15px_rgba(199,255,254,0.1)] transition-all duration-200"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined text-lg"
+            data-icon="pending_actions"
+            >pending_actions</span
+          >
+          <span>REQUESTS</span>
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-3 text-[#c7fffe]/40 hover:bg-[#c7fffe]/5 hover:text-[#c7fffe]/70 hover:border-l-4 hover:border-[#c7fffe]/30 transition-all duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-lg" data-icon="history"
+            >history</span
+          >
+          <span>LOGS</span>
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-3 text-[#c7fffe]/40 hover:bg-[#c7fffe]/5 hover:text-[#c7fffe]/70 hover:border-l-4 hover:border-[#c7fffe]/30 transition-all duration-200"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined text-lg"
+            data-icon="settings_input_component"
+            >settings_input_component</span
+          >
+          <span>SYSTEM</span>
+        </a>
+      </div>
+      <div class="px-6 py-4 mt-auto space-y-4">
+        <button
+          class="w-full bg-[#c7fffe]/10 border border-[#c7fffe]/30 py-2 text-[#c7fffe] hover:bg-[#c7fffe]/20 transition-all clip-path-chamfer-br active:scale-95"
+        >
+          INITIATE_SYNC
+        </button>
+        <a
+          class="flex items-center gap-4 py-3 text-error/60 hover:text-error transition-colors"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined text-lg"
+            data-icon="power_settings_new"
+            >power_settings_new</span
+          >
+          <span>TERMINATE</span>
+        </a>
+      </div>
+    </aside>
+    <!-- Main Content Canvas -->
+    <main
+      class="md:ml-64 pt-24 px-8 pb-12 min-h-screen relative overflow-hidden"
+    >
+      <!-- Scanline Overlay -->
+      <div class="fixed inset-0 pointer-events-none scanline z-10"></div>
+      <!-- Background Glows -->
+      <div
+        class="fixed top-1/4 -right-20 w-96 h-96 bg-primary/5 blur-[120px] rounded-full"
+      ></div>
+      <div
+        class="fixed bottom-0 -left-20 w-[500px] h-[500px] bg-secondary-container/5 blur-[150px] rounded-full"
+      ></div>
+      <!-- Page Header -->
+      <header class="mb-12 relative">
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-6"
+        >
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <div
+                class="w-2 h-2 bg-primary animate-pulse shadow-[0_0_8px_#c7fffe]"
+              ></div>
+              <span
+                class="font-label text-primary text-[10px] tracking-[0.3em] uppercase"
+                >SYSTEM.STATUS: OPERATIONAL</span
+              >
+            </div>
+            <h1
+              class="font-headline text-5xl md:text-6xl font-bold tracking-tighter uppercase text-on-surface"
+            >
+              APPOINTMENT_<span class="text-primary">LEDGER</span>
+            </h1>
+          </div>
+          <div
+            class="bg-surface-container-high/50 backdrop-blur-md border border-outline-variant/30 p-4 clip-path-chamfer-tl"
+          >
+            <div
+              class="font-label text-[10px] text-primary/60 tracking-widest uppercase mb-1"
+            >
+              Queue Density
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="font-headline text-3xl font-bold text-on-surface"
+                >14</span
+              >
+              <span class="text-primary/40 text-xs">PENDING_UNITS</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Tactical Ledger Table -->
+      <div
+        class="relative bg-surface-container-low/40 backdrop-blur-xl border border-outline-variant/10 overflow-hidden group"
+      >
+        <!-- Corner Brackets -->
+        <div
+          class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary/40"
+        ></div>
+        <div
+          class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary/40"
+        ></div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead
+              class="bg-surface-container-high/60 border-b border-outline-variant/20"
+            >
+              <tr
+                class="font-label text-[10px] tracking-[0.2em] uppercase text-primary/70"
+              >
+                <th class="px-6 py-5 font-medium">STUDENT_ID</th>
+                <th class="px-6 py-5 font-medium">BIO-METRIC NAME</th>
+                <th class="px-6 py-5 font-medium">TEMPORAL SLOT</th>
+                <th class="px-6 py-5 font-medium">PURPOSE</th>
+                <th class="px-6 py-5 font-medium">STATUS</th>
+                <th class="px-6 py-5 font-medium text-right">ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-outline-variant/10 font-body text-sm">
+              <!-- Table Row 1 -->
+              <tr class="hover:bg-primary/5 transition-colors group/row">
+                <td class="px-6 py-6 font-mono text-primary/80">#STU-8829-X</td>
+                <td class="px-6 py-6">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-8 h-8 border border-outline-variant/30 bg-surface-container-highest flex items-center justify-center"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary/40 text-sm"
+                        data-icon="fingerprint"
+                        >fingerprint</span
+                      >
+                    </div>
+                    <span class="font-semibold tracking-tight"
+                      >Kaelen Voss</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-6">
+                  <div class="flex flex-col">
+                    <span class="text-on-surface">2044-09-12</span>
+                    <span class="text-[10px] text-primary/50 tracking-widest"
+                      >14:30 ZULU</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-6">
+                  <span
+                    class="bg-surface-container-highest px-3 py-1 text-[11px] text-on-surface-variant uppercase tracking-wider border-l border-primary/40"
+                    >Neural Sync Alignment</span
+                  >
+                </td>
+                <td class="px-6 py-6">
+                  <span class="flex items-center gap-2 text-primary">
+                    <span
+                      class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"
+                    ></span>
+                    <span
+                      class="text-[10px] font-bold tracking-widest uppercase"
+                      >PENDING</span
+                    >
+                  </span>
+                </td>
+                <td class="px-6 py-6 text-right">
+                  <div class="flex justify-end gap-3">
+                    <button
+                      class="px-4 py-2 bg-primary text-on-primary text-[10px] font-bold tracking-widest uppercase clip-path-chamfer-br hover:shadow-[0_0_15px_#c7fffe] transition-all active:scale-95"
+                    >
+                      AUTHORIZE
+                    </button>
+                    <button
+                      class="px-4 py-2 border border-error/30 text-error text-[10px] font-bold tracking-widest uppercase hover:bg-error/10 transition-all active:scale-95"
+                    >
+                      TERMINATE
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <!-- Table Row 2 -->
+              <tr class="hover:bg-primary/5 transition-colors group/row">
+                <td class="px-6 py-6 font-mono text-primary/80">#STU-4410-Q</td>
+                <td class="px-6 py-6">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-8 h-8 border border-outline-variant/30 bg-surface-container-highest flex items-center justify-center"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary/40 text-sm"
+                        data-icon="fingerprint"
+                        >fingerprint</span
+                      >
+                    </div>
+                    <span class="font-semibold tracking-tight"
+                      >Mara Solari</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-6">
+                  <div class="flex flex-col">
+                    <span class="text-on-surface">2044-09-12</span>
+                    <span class="text-[10px] text-primary/50 tracking-widest"
+                      >15:15 ZULU</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-6">
+                  <span
+                    class="bg-surface-container-highest px-3 py-1 text-[11px] text-on-surface-variant uppercase tracking-wider border-l border-primary/40"
+                    >Void Physics Dissertation</span
+                  >
+                </td>
+                <td class="px-6 py-6">
+                  <span class="flex items-center gap-2 text-primary">
+                    <span
+                      class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"
+                    ></span>
+                    <span
+                      class="text-[10px] font-bold tracking-widest uppercase"
+                      >PENDING</span
+                    >
+                  </span>
+                </td>
+                <td class="px-6 py-6 text-right">
+                  <div class="flex justify-end gap-3">
+                    <button
+                      class="px-4 py-2 bg-primary text-on-primary text-[10px] font-bold tracking-widest uppercase clip-path-chamfer-br hover:shadow-[0_0_15px_#c7fffe] transition-all active:scale-95"
+                    >
+                      AUTHORIZE
+                    </button>
+                    <button
+                      class="px-4 py-2 border border-error/30 text-error text-[10px] font-bold tracking-widest uppercase hover:bg-error/10 transition-all active:scale-95"
+                    >
+                      TERMINATE
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <!-- Table Row 3 -->
+              <tr class="hover:bg-primary/5 transition-colors group/row">
+                <td class="px-6 py-6 font-mono text-primary/80">#STU-0112-Z</td>
+                <td class="px-6 py-6">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-8 h-8 border border-outline-variant/30 bg-surface-container-highest flex items-center justify-center"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary/40 text-sm"
+                        data-icon="fingerprint"
+                        >fingerprint</span
+                      >
+                    </div>
+                    <span class="font-semibold tracking-tight">Jax Thorne</span>
+                  </div>
+                </td>
+                <td class="px-6 py-6">
+                  <div class="flex flex-col">
+                    <span class="text-on-surface">2044-09-13</span>
+                    <span class="text-[10px] text-primary/50 tracking-widest"
+                      >09:00 ZULU</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-6">
+                  <span
+                    class="bg-surface-container-highest px-3 py-1 text-[11px] text-on-surface-variant uppercase tracking-wider border-l border-primary/40"
+                    >Augmented Limb Calib.</span
+                  >
+                </td>
+                <td class="px-6 py-6">
+                  <span class="flex items-center gap-2 text-primary">
+                    <span
+                      class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"
+                    ></span>
+                    <span
+                      class="text-[10px] font-bold tracking-widest uppercase"
+                      >PENDING</span
+                    >
+                  </span>
+                </td>
+                <td class="px-6 py-6 text-right">
+                  <div class="flex justify-end gap-3">
+                    <button
+                      class="px-4 py-2 bg-primary text-on-primary text-[10px] font-bold tracking-widest uppercase clip-path-chamfer-br hover:shadow-[0_0_15px_#c7fffe] transition-all active:scale-95"
+                    >
+                      AUTHORIZE
+                    </button>
+                    <button
+                      class="px-4 py-2 border border-error/30 text-error text-[10px] font-bold tracking-widest uppercase hover:bg-error/10 transition-all active:scale-95"
+                    >
+                      TERMINATE
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <!-- Table Row 4 -->
+              <tr class="hover:bg-primary/5 transition-colors group/row">
+                <td class="px-6 py-6 font-mono text-primary/80">#STU-5591-L</td>
+                <td class="px-6 py-6">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-8 h-8 border border-outline-variant/30 bg-surface-container-highest flex items-center justify-center"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary/40 text-sm"
+                        data-icon="fingerprint"
+                        >fingerprint</span
+                      >
+                    </div>
+                    <span class="font-semibold tracking-tight"
+                      >Elena Valis</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-6">
+                  <div class="flex flex-col">
+                    <span class="text-on-surface">2044-09-13</span>
+                    <span class="text-[10px] text-primary/50 tracking-widest"
+                      >11:45 ZULU</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-6">
+                  <span
+                    class="bg-surface-container-highest px-3 py-1 text-[11px] text-on-surface-variant uppercase tracking-wider border-l border-primary/40"
+                    >Security Clearance Review</span
+                  >
+                </td>
+                <td class="px-6 py-6">
+                  <span class="flex items-center gap-2 text-primary">
+                    <span
+                      class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"
+                    ></span>
+                    <span
+                      class="text-[10px] font-bold tracking-widest uppercase"
+                      >PENDING</span
+                    >
+                  </span>
+                </td>
+                <td class="px-6 py-6 text-right">
+                  <div class="flex justify-end gap-3">
+                    <button
+                      class="px-4 py-2 bg-primary text-on-primary text-[10px] font-bold tracking-widest uppercase clip-path-chamfer-br hover:shadow-[0_0_15px_#c7fffe] transition-all active:scale-95"
+                    >
+                      AUTHORIZE
+                    </button>
+                    <button
+                      class="px-4 py-2 border border-error/30 text-error text-[10px] font-bold tracking-widest uppercase hover:bg-error/10 transition-all active:scale-95"
+                    >
+                      TERMINATE
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Table Footer/Controls -->
+        <div
+          class="bg-surface-container-high/60 px-6 py-4 border-t border-outline-variant/20 flex flex-col md:flex-row md:items-center justify-between gap-4"
+        >
+          <div
+            class="flex gap-4 font-label text-[10px] uppercase tracking-widest"
+          >
+            <span class="text-on-surface-variant"
+              >Showing 4 of 14 requests</span
+            >
+            <span class="text-primary/40">|</span>
+            <span class="text-on-surface-variant"
+              >Filter: <span class="text-primary">All_Sectors</span></span
+            >
+          </div>
+          <div class="flex items-center gap-2">
+            <button
+              class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 text-primary/40 hover:text-primary transition-colors"
+            >
+              <span
+                class="material-symbols-outlined text-sm"
+                data-icon="chevron_left"
+                >chevron_left</span
+              >
+            </button>
+            <div class="flex gap-1">
+              <span
+                class="w-8 h-8 flex items-center justify-center bg-primary/20 text-primary font-bold text-xs"
+                >1</span
+              >
+              <span
+                class="w-8 h-8 flex items-center justify-center text-on-surface-variant/50 text-xs"
+                >2</span
+              >
+              <span
+                class="w-8 h-8 flex items-center justify-center text-on-surface-variant/50 text-xs"
+                >3</span
+              >
+            </div>
+            <button
+              class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 text-primary/40 hover:text-primary transition-colors"
+            >
+              <span
+                class="material-symbols-outlined text-sm"
+                data-icon="chevron_right"
+                >chevron_right</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- System Meta Grid -->
+      <section class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div
+          class="bg-surface-container/60 backdrop-blur-md p-6 border border-outline-variant/10 relative overflow-hidden"
+        >
+          <div class="absolute top-0 right-0 p-4 opacity-10">
+            <span class="material-symbols-outlined text-6xl" data-icon="memory"
+              >memory</span
+            >
+          </div>
+          <h4
+            class="font-label text-[10px] tracking-widest text-primary uppercase mb-4"
+          >
+            Uplink Stability
+          </h4>
+          <div class="h-1 bg-surface-container-highest w-full mb-2">
+            <div
+              class="h-full bg-primary w-[88%] shadow-[0_0_10px_#c7fffe]"
+            ></div>
+          </div>
+          <div
+            class="flex justify-between text-[10px] font-mono text-on-surface-variant"
+          >
+            <span>BANDWIDTH: 4.2 TB/S</span>
+            <span>LATENCY: 2ms</span>
+          </div>
+        </div>
+        <div
+          class="bg-surface-container/60 backdrop-blur-md p-6 border border-outline-variant/10 relative overflow-hidden"
+        >
+          <div class="absolute top-0 right-0 p-4 opacity-10">
+            <span
+              class="material-symbols-outlined text-6xl"
+              data-icon="security"
+              >security</span
+            >
+          </div>
+          <h4
+            class="font-label text-[10px] tracking-widest text-primary uppercase mb-4"
+          >
+            Encryption Cycle
+          </h4>
+          <div class="flex items-center gap-4">
+            <div
+              class="w-12 h-12 rounded-full border-4 border-primary border-t-transparent animate-spin"
+            ></div>
+            <div>
+              <div class="text-xl font-headline font-bold text-on-surface">
+                HEX-074-Z
+              </div>
+              <div class="text-[10px] text-on-surface-variant">
+                NEXT ROTATION: 42s
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-surface-container/60 backdrop-blur-md p-6 border border-outline-variant/10 relative overflow-hidden"
+        >
+          <div class="absolute top-0 right-0 p-4 opacity-10 text-error">
+            <span class="material-symbols-outlined text-6xl" data-icon="warning"
+              >warning</span
+            >
+          </div>
+          <h4
+            class="font-label text-[10px] tracking-widest text-error uppercase mb-4"
+          >
+            Unauthorized Attempts
+          </h4>
+          <div class="text-4xl font-headline font-bold text-on-surface">00</div>
+          <div class="text-[10px] text-on-surface-variant mt-2">
+            THREAT_LEVEL: <span class="text-primary">MINIMAL</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Contextual Utility Action -->
+    <div class="fixed bottom-8 right-8 z-50">
+      <button
+        class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center clip-path-chamfer-tl shadow-[0_0_30px_rgba(199,255,254,0.3)] hover:scale-110 hover:shadow-[0_0_40px_rgba(199,255,254,0.5)] transition-all"
+      >
+        <span
+          class="material-symbols-outlined text-3xl font-bold"
+          data-icon="add"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >add</span
+        >
+      </button>
+    </div>
+  </body>
+</html>

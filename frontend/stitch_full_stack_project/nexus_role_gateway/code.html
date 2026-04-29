@@ -1,0 +1,394 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>VOID NEXUS | Access Protocol</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#303632",
+              "primary-container": "#00f0f0",
+              "secondary-container": "#571ebd",
+              "on-primary-fixed": "#002020",
+              "error-container": "#93000a",
+              "tertiary-fixed-dim": "#d3bbff",
+              "surface-container-high": "#252b27",
+              "tertiary-container": "#e2d0ff",
+              secondary: "#d0bcff",
+              "on-secondary-container": "#c4abff",
+              "on-tertiary-fixed": "#250059",
+              "surface-container-low": "#171d19",
+              "on-primary-fixed-variant": "#004f4f",
+              "on-error": "#690005",
+              "on-background": "#dee4dd",
+              "surface-bright": "#343b36",
+              "on-primary": "#003737",
+              "on-secondary-fixed-variant": "#551abb",
+              "tertiary-fixed": "#ebddff",
+              outline: "#849493",
+              "on-tertiary-fixed-variant": "#5728a5",
+              "inverse-surface": "#dee4dd",
+              "surface-container-lowest": "#0a0f0c",
+              "on-secondary-fixed": "#23005c",
+              surface: "#0f1511",
+              "on-error-container": "#ffdad6",
+              error: "#ffb4ab",
+              "outline-variant": "#3a4a49",
+              "inverse-primary": "#006a6a",
+              "surface-variant": "#303632",
+              "on-secondary": "#3c0091",
+              "on-primary-container": "#006969",
+              "primary-fixed": "#2cfbfb",
+              "surface-dim": "#0f1511",
+              "on-tertiary": "#3f008d",
+              "on-surface": "#dee4dd",
+              "secondary-fixed": "#e9ddff",
+              tertiary: "#faf1ff",
+              "on-tertiary-container": "#6e43be",
+              "on-surface-variant": "#b9cac9",
+              "primary-fixed-dim": "#00dddd",
+              "secondary-fixed-dim": "#d0bcff",
+              background: "#0f1511",
+              "surface-tint": "#00dddd",
+              primary: "#c7fffe",
+              "surface-container": "#1b211d",
+              "inverse-on-surface": "#2c322d",
+            },
+            borderRadius: {
+              DEFAULT: "0px",
+              lg: "0px",
+              xl: "0px",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #0f1511;
+        background-image:
+          linear-gradient(rgba(199, 255, 254, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(199, 255, 254, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      .chamfer-card {
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% calc(100% - 20px),
+          calc(100% - 20px) 100%,
+          0 100%
+        );
+      }
+      .scanline {
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(199, 255, 254, 0.02) 50%
+        );
+        background-size: 100% 4px;
+        pointer-events: none;
+      }
+      .corner-bracket-tl {
+        border-top: 2px solid #c7fffe;
+        border-left: 2px solid #c7fffe;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        top: -2px;
+        left: -2px;
+      }
+      .corner-bracket-tr {
+        border-top: 2px solid #c7fffe;
+        border-right: 2px solid #c7fffe;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        top: -2px;
+        right: -2px;
+      }
+      .corner-bracket-bl {
+        border-bottom: 2px solid #c7fffe;
+        border-left: 2px solid #c7fffe;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        bottom: -2px;
+        left: -2px;
+      }
+      .corner-bracket-br {
+        border-bottom: 2px solid #c7fffe;
+        border-right: 2px solid #c7fffe;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+      }
+    </style>
+  </head>
+  <body
+    class="font-body text-on-surface min-h-screen flex flex-col items-center justify-center overflow-hidden selection:bg-primary selection:text-on-primary"
+  >
+    <div class="fixed inset-0 scanline z-10"></div>
+    <!-- Top Navigation Shell Suppressed as per Task Intent (Transactional/Login Focus) -->
+    <header
+      class="fixed top-0 w-full flex justify-between items-center px-8 py-6 z-50"
+    >
+      <div
+        class="text-2xl font-bold tracking-tighter text-primary drop-shadow-[0_0_8px_rgba(199,255,254,0.4)] font-headline"
+      >
+        VOID NEXUS
+      </div>
+      <div class="flex gap-4">
+        <span class="material-symbols-outlined text-primary/40 text-sm"
+          >wifi_tethering</span
+        >
+        <span
+          class="text-primary/40 font-headline text-[10px] tracking-[0.2em] uppercase self-center"
+          >System_Online_v4.0.1</span
+        >
+      </div>
+    </header>
+    <main
+      class="relative z-20 w-full max-w-6xl px-6 flex flex-col items-center"
+    >
+      <!-- Header Branding -->
+      <div class="mb-16 text-center">
+        <div
+          class="inline-block px-3 py-1 mb-4 border border-primary/20 bg-primary/5"
+        >
+          <span
+            class="font-label text-[10px] uppercase tracking-[0.3em] text-primary"
+            >Identity_Verification_Required</span
+          >
+        </div>
+        <h1
+          class="font-headline text-5xl md:text-7xl font-bold tracking-tighter text-on-surface mb-2"
+        >
+          SELECT ACCESS
+          <span
+            class="text-primary drop-shadow-[0_0_15px_rgba(199,255,254,0.3)]"
+            >PROTOCOL</span
+          >
+        </h1>
+        <p
+          class="text-on-surface-variant font-label text-sm tracking-widest uppercase opacity-60"
+        >
+          Initialize connection to sector 7 central grid
+        </p>
+      </div>
+      <!-- Role Selection Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+        <!-- Card 1: STUDENT -->
+        <button
+          class="group relative flex flex-col items-start p-8 bg-surface-container-low/60 backdrop-blur-xl border border-outline-variant/30 transition-all duration-300 hover:border-primary/50 hover:bg-surface-container-high chamfer-card text-left"
+        >
+          <div
+            class="corner-bracket-tl opacity-0 group-hover:opacity-100 transition-opacity"
+          ></div>
+          <div
+            class="corner-bracket-tr opacity-0 group-hover:opacity-100 transition-opacity"
+          ></div>
+          <div
+            class="mb-12 p-4 bg-surface-container-highest flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+          >
+            <span
+              class="material-symbols-outlined text-4xl text-primary"
+              data-icon="school"
+              >school</span
+            >
+          </div>
+          <div class="mt-auto">
+            <div
+              class="text-xs font-label tracking-[0.2em] text-primary/40 mb-1"
+            >
+              ACCESS_LEVEL_01
+            </div>
+            <h3
+              class="font-headline text-2xl font-bold tracking-tighter text-primary"
+            >
+              STUDENT
+            </h3>
+            <p
+              class="text-on-surface-variant text-sm mt-4 leading-relaxed opacity-60 font-body"
+            >
+              Standard computational resources and archive access for academic
+              pursuits within the Nexus.
+            </p>
+          </div>
+          <div
+            class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0"
+          >
+            <span class="material-symbols-outlined text-primary"
+              >arrow_forward</span
+            >
+          </div>
+          <div
+            class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-[inset_0_0_40px_rgba(199,255,254,0.05)]"
+          ></div>
+        </button>
+        <!-- Card 2: FACULTY -->
+        <button
+          class="group relative flex flex-col items-start p-8 bg-surface-container-low/60 backdrop-blur-xl border border-outline-variant/30 transition-all duration-300 hover:border-primary/50 hover:bg-surface-container-high chamfer-card text-left"
+        >
+          <div
+            class="corner-bracket-tl opacity-0 group-hover:opacity-100 transition-opacity"
+          ></div>
+          <div
+            class="corner-bracket-tr opacity-0 group-hover:opacity-100 transition-opacity"
+          ></div>
+          <div
+            class="mb-12 p-4 bg-surface-container-highest flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+          >
+            <span
+              class="material-symbols-outlined text-4xl text-primary"
+              data-icon="supervisor_account"
+              >supervisor_account</span
+            >
+          </div>
+          <div class="mt-auto">
+            <div
+              class="text-xs font-label tracking-[0.2em] text-primary/40 mb-1"
+            >
+              ACCESS_LEVEL_02
+            </div>
+            <h3
+              class="font-headline text-2xl font-bold tracking-tighter text-primary"
+            >
+              FACULTY
+            </h3>
+            <p
+              class="text-on-surface-variant text-sm mt-4 leading-relaxed opacity-60 font-body"
+            >
+              Elevated permissions for curriculum management and neural node
+              supervision across sectors.
+            </p>
+          </div>
+          <div
+            class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0"
+          >
+            <span class="material-symbols-outlined text-primary"
+              >arrow_forward</span
+            >
+          </div>
+          <div
+            class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-[inset_0_0_40px_rgba(199,255,254,0.05)]"
+          ></div>
+        </button>
+        <!-- Card 3: ADMIN -->
+        <button
+          class="group relative flex flex-col items-start p-8 bg-surface-container-low/60 backdrop-blur-xl border border-outline-variant/30 transition-all duration-300 hover:border-primary/50 hover:bg-surface-container-high chamfer-card text-left"
+        >
+          <div
+            class="corner-bracket-tl opacity-0 group-hover:opacity-100 transition-opacity"
+          ></div>
+          <div
+            class="corner-bracket-tr opacity-0 group-hover:opacity-100 transition-opacity"
+          ></div>
+          <div
+            class="mb-12 p-4 bg-surface-container-highest flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+          >
+            <span
+              class="material-symbols-outlined text-4xl text-primary"
+              data-icon="terminal"
+              >terminal</span
+            >
+          </div>
+          <div class="mt-auto">
+            <div
+              class="text-xs font-label tracking-[0.2em] text-primary/40 mb-1"
+            >
+              ACCESS_LEVEL_CORE
+            </div>
+            <h3
+              class="font-headline text-2xl font-bold tracking-tighter text-primary"
+            >
+              ADMIN
+            </h3>
+            <p
+              class="text-on-surface-variant text-sm mt-4 leading-relaxed opacity-60 font-body"
+            >
+              Full unrestricted system override and terminal access for core
+              infrastructure maintenance.
+            </p>
+          </div>
+          <div
+            class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0"
+          >
+            <span class="material-symbols-outlined text-primary"
+              >arrow_forward</span
+            >
+          </div>
+          <div
+            class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-[inset_0_0_40px_rgba(199,255,254,0.05)]"
+          ></div>
+        </button>
+      </div>
+      <!-- Decorative Elements -->
+      <div
+        class="mt-20 w-full flex justify-between items-center opacity-30 px-4"
+      >
+        <div
+          class="h-[1px] flex-grow bg-gradient-to-r from-transparent via-primary/40 to-transparent"
+        ></div>
+        <div
+          class="mx-8 font-headline text-[10px] tracking-[0.4em] text-primary flex items-center gap-4"
+        >
+          <span>00110101_ACCESS_GATE</span>
+          <span class="material-symbols-outlined text-[10px]">token</span>
+          <span>LATENCY_2MS</span>
+        </div>
+        <div
+          class="h-[1px] flex-grow bg-gradient-to-r from-transparent via-primary/40 to-transparent"
+        ></div>
+      </div>
+    </main>
+    <!-- Background Ambient Glow -->
+    <div
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none z-0"
+    ></div>
+    <!-- Footer Info -->
+    <footer
+      class="fixed bottom-0 w-full p-8 flex justify-between items-end z-50"
+    >
+      <div class="flex flex-col gap-1">
+        <div class="text-[10px] font-headline tracking-[0.1em] text-primary/40">
+          SYSTEM_AUTH_KEY
+        </div>
+        <div class="text-[10px] font-headline tracking-[0.1em] text-primary">
+          X89-VOID-PROTO-NEXUS-01
+        </div>
+      </div>
+      <div
+        class="text-[10px] font-label tracking-[0.2em] text-primary/40 text-right uppercase"
+      >
+        Encrypted Connection Secured via Obsidian Layer
+      </div>
+    </footer>
+  </body>
+</html>

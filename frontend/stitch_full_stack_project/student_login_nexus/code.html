@@ -1,0 +1,319 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>UNIMEET NEXUS | SECURE ACCESS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#303632",
+              "outline-variant": "#3a4a49",
+              "inverse-surface": "#dee4dd",
+              "surface-tint": "#00dddd",
+              "on-surface": "#dee4dd",
+              "on-primary": "#003737",
+              "secondary-container": "#571ebd",
+              error: "#ffb4ab",
+              "surface-container": "#1b211d",
+              "error-container": "#93000a",
+              "on-secondary": "#3c0091",
+              outline: "#849493",
+              surface: "#0f1511",
+              "surface-dim": "#0f1511",
+              "on-background": "#dee4dd",
+              "surface-container-low": "#171d19",
+              "on-tertiary-container": "#6e43be",
+              primary: "#c7fffe",
+              "inverse-on-surface": "#2c322d",
+              secondary: "#d0bcff",
+              "surface-bright": "#343b36",
+              "on-primary-fixed": "#002020",
+              "surface-container-lowest": "#0a0f0c",
+              "inverse-primary": "#006a6a",
+              "on-tertiary-fixed": "#250059",
+              tertiary: "#faf1ff",
+              "primary-fixed": "#2cfbfb",
+              "on-tertiary": "#3f008d",
+              "on-secondary-container": "#c4abff",
+              "on-error": "#690005",
+              "primary-fixed-dim": "#00dddd",
+              "secondary-fixed-dim": "#d0bcff",
+              "surface-variant": "#303632",
+              "secondary-fixed": "#e9ddff",
+              "on-secondary-fixed-variant": "#551abb",
+              "on-error-container": "#ffdad6",
+              "tertiary-container": "#e2d0ff",
+              "surface-container-high": "#252b27",
+              "on-surface-variant": "#b9cac9",
+              "primary-container": "#00f0f0",
+              "on-tertiary-fixed-variant": "#5728a5",
+              "on-secondary-fixed": "#23005c",
+              "on-primary-container": "#006969",
+              "on-primary-fixed-variant": "#004f4f",
+              background: "#0f1511",
+              "tertiary-fixed-dim": "#d3bbff",
+              "tertiary-fixed": "#ebddff",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #0f1511;
+        background-image:
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(0, 240, 240, 0.05) 0%,
+            transparent 50%
+          ),
+          linear-gradient(rgba(20, 25, 22, 0.5) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(20, 25, 22, 0.5) 1px, transparent 1px);
+        background-size:
+          100% 100%,
+          40px 40px,
+          40px 40px;
+        font-family: "Inter", sans-serif;
+      }
+      .chamfer-clip {
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
+      }
+      .chamfer-btn {
+        clip-path: polygon(5% 0, 100% 0, 100% 70%, 95% 100%, 0 100%, 0 30%);
+      }
+      .scanline {
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(0, 240, 240, 0.03) 50%
+        );
+        background-size: 100% 2px;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center p-6 text-on-surface selection:bg-primary-container selection:text-on-primary"
+  >
+    <!-- Scanline Overlay -->
+    <div class="fixed inset-0 scanline z-50"></div>
+    <main class="relative w-full max-w-lg">
+      <!-- Top Tech Reticle Details -->
+      <div class="absolute -top-12 -left-4 flex space-x-2">
+        <div class="w-2 h-2 bg-primary"></div>
+        <div class="w-8 h-[1px] bg-outline-variant mt-1"></div>
+        <span
+          class="text-[10px] font-label tracking-[0.2em] text-primary/60 uppercase"
+          >SYSTEM_AUTH_V4.0</span
+        >
+      </div>
+      <div class="absolute -bottom-12 -right-4 flex items-center space-x-2">
+        <span
+          class="text-[10px] font-label tracking-[0.2em] text-outline uppercase"
+          >SECURE_ENCRYPTION_ACTIVE</span
+        >
+        <div class="w-12 h-[1px] bg-outline-variant"></div>
+        <div class="w-2 h-2 border border-primary"></div>
+      </div>
+      <!-- Main Container: Obsidian Monolith -->
+      <div
+        class="bg-surface-container-low/80 backdrop-blur-2xl p-10 relative overflow-hidden border border-outline-variant/20 shadow-2xl"
+      >
+        <!-- Decorative L-Brackets -->
+        <div
+          class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary"
+        ></div>
+        <div
+          class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary"
+        ></div>
+        <!-- Header Section -->
+        <header class="mb-12">
+          <div class="flex justify-between items-start mb-4">
+            <h1
+              class="text-4xl font-headline font-bold tracking-tighter text-primary uppercase"
+            >
+              UNIMEET<br />NEXUS
+            </h1>
+            <div class="flex flex-col items-end">
+              <span
+                class="bg-secondary-container text-on-secondary-container text-[10px] px-3 py-1 font-label font-bold tracking-widest uppercase"
+              >
+                STUDENT_ROLE
+              </span>
+              <span class="text-[9px] text-outline mt-1 font-mono"
+                >ID: 00-459-NX</span
+              >
+            </div>
+          </div>
+          <div
+            class="h-[1px] w-full bg-gradient-to-r from-primary/40 via-outline-variant/10 to-transparent"
+          ></div>
+        </header>
+        <!-- Login Interface -->
+        <section class="space-y-8">
+          <!-- Data Input Module -->
+          <div class="space-y-6">
+            <div class="relative group">
+              <label
+                class="block text-[10px] font-label font-bold text-outline uppercase tracking-[0.15em] mb-2 px-1"
+              >
+                Access Identifier (Email)
+              </label>
+              <div
+                class="flex items-center bg-surface-container-highest/50 border-l-2 border-transparent group-focus-within:border-primary group-focus-within:bg-surface-container-highest transition-all duration-300"
+              >
+                <span
+                  class="material-symbols-outlined px-4 text-outline group-focus-within:text-primary transition-colors"
+                  >alternate_email</span
+                >
+                <input
+                  class="w-full bg-transparent border-none text-on-surface font-body py-4 focus:ring-0 placeholder:text-outline-variant/50 placeholder:uppercase placeholder:text-xs"
+                  placeholder="USER@UNIMEET.EDU"
+                  type="email"
+                />
+              </div>
+            </div>
+            <div class="relative group">
+              <label
+                class="block text-[10px] font-label font-bold text-outline uppercase tracking-[0.15em] mb-2 px-1"
+              >
+                Secure Keyphrase
+              </label>
+              <div
+                class="flex items-center bg-surface-container-highest/50 border-l-2 border-transparent group-focus-within:border-primary group-focus-within:bg-surface-container-highest transition-all duration-300"
+              >
+                <span
+                  class="material-symbols-outlined px-4 text-outline group-focus-within:text-primary transition-colors"
+                  >lock_open</span
+                >
+                <input
+                  class="w-full bg-transparent border-none text-on-surface font-body py-4 focus:ring-0 placeholder:text-outline-variant/50"
+                  placeholder="••••••••••••"
+                  type="password"
+                />
+                <button
+                  class="px-4 text-outline-variant hover:text-primary transition-colors"
+                >
+                  <span class="material-symbols-outlined text-sm"
+                    >visibility</span
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Action Module -->
+          <div class="pt-4">
+            <button
+              class="w-full group relative overflow-hidden chamfer-btn bg-gradient-to-r from-primary to-primary-container text-on-primary py-5 font-headline font-bold uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(0,240,240,0.2)] hover:shadow-[0_0_35px_rgba(0,240,240,0.4)] transition-all duration-500"
+            >
+              <span
+                class="relative z-10 flex items-center justify-center space-x-3"
+              >
+                <span class="text-sm">INITIALIZE SESSION</span>
+                <span class="material-symbols-outlined text-lg">bolt</span>
+              </span>
+              <div
+                class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"
+              ></div>
+            </button>
+            <div
+              class="mt-8 flex justify-between items-center text-[10px] font-label text-outline tracking-wider uppercase"
+            >
+              <a
+                class="hover:text-primary transition-colors border-b border-transparent hover:border-primary"
+                href="#"
+                >Request Bypass</a
+              >
+              <div class="flex items-center space-x-2">
+                <div
+                  class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"
+                ></div>
+                <span>Servers Nominal</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Bottom Telemetry Card (Asymmetric Detail) -->
+        <div
+          class="mt-12 -mx-10 -mb-10 bg-surface-container-high/40 p-6 flex items-center justify-between border-t border-outline-variant/10"
+        >
+          <div class="flex space-x-6">
+            <div class="text-center">
+              <p class="text-[8px] text-outline-variant uppercase">latency</p>
+              <p class="text-xs font-mono text-primary">12ms</p>
+            </div>
+            <div class="text-center border-l border-outline-variant/20 pl-6">
+              <p class="text-[8px] text-outline-variant uppercase">
+                encryption
+              </p>
+              <p class="text-xs font-mono text-primary">AES-512</p>
+            </div>
+          </div>
+          <div class="opacity-20">
+            <img
+              alt="technical circuitry diagram"
+              class="h-8 grayscale contrast-125"
+              data-alt="abstract technical circuitry diagram with fine lines and nodes in monochrome cyan on black background minimal tech texture"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFbFdiakI1Uz-k1-rFn1tWJ1lptw17m8VsfD9P2VSKA1P2g2vPYfgbCEE39y_v_61GKs0zHxcB9gcQNGtjRDn952CKmWSTX10h3UF6xqPWWZ0UU5SwZ_V-usOIoysv8kSUaq-LJLKQN4YFjqqopPgu26w92jSDNX0yzB21sjAyVowKD8CVecriV3htN1Z3HwRmJBBOa6lUqoz_sngOFHKW7SwFL--4e29rOqWB4N162gaRENsorOna-heKHKoSfSft8b9clKS68OXN"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Footer Legal & Versioning -->
+      <div class="mt-8 flex justify-center space-x-4">
+        <span
+          class="text-[9px] font-label text-outline-variant uppercase tracking-[0.3em]"
+          >nexus_os_kernel_7.2</span
+        >
+        <span class="text-[9px] font-label text-outline-variant/30">•</span>
+        <span
+          class="text-[9px] font-label text-outline-variant uppercase tracking-[0.3em]"
+          >© 2077 intergalactic ed-systems</span
+        >
+      </div>
+    </main>
+    <!-- Side Decoration (Asymmetric Cinematic Element) -->
+    <div
+      class="hidden xl:block fixed right-12 top-1/2 -translate-y-1/2 text-right"
+    >
+      <div
+        class="h-64 w-[1px] bg-gradient-to-b from-transparent via-primary/20 to-transparent absolute right-0"
+      ></div>
+      <div class="pr-6 space-y-4">
+        <p
+          class="text-[10px] font-label text-primary/40 uppercase tracking-[0.5em] [writing-mode:vertical-rl]"
+        >
+          system_protocol_ready
+        </p>
+        <div class="flex flex-col items-end space-y-1">
+          <div class="w-4 h-[1px] bg-primary/40"></div>
+          <div class="w-8 h-[1px] bg-primary/20"></div>
+          <div class="w-4 h-[1px] bg-primary/40"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

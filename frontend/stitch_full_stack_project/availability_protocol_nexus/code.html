@@ -1,0 +1,630 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>VOID_NEXUS_OS // SLOT_MANAGEMENT</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .clip-path-chamfer-bottom {
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% calc(100% - 15px),
+          calc(100% - 15px) 100%,
+          0 100%
+        );
+      }
+      .clip-path-chamfer-btn {
+        clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+      }
+      .clip-path-card {
+        clip-path: polygon(
+          0 0,
+          calc(100% - 20px) 0,
+          100% 20px,
+          100% 100%,
+          20px 100%,
+          0 calc(100% - 20px)
+        );
+      }
+      .scanline-overlay {
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(199, 255, 254, 0.03) 50%
+        );
+        background-size: 100% 4px;
+        pointer-events: none;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 300,
+          "GRAD" 0,
+          "opsz" 24;
+        vertical-align: middle;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#343b36",
+              "secondary-fixed": "#e9ddff",
+              "primary-container": "#00f0f0",
+              primary: "#c7fffe",
+              "on-secondary": "#3c0091",
+              "on-error-container": "#ffdad6",
+              "on-primary": "#003737",
+              "error-container": "#93000a",
+              outline: "#849493",
+              "inverse-primary": "#006a6a",
+              "inverse-on-surface": "#2c322d",
+              "on-surface-variant": "#b9cac9",
+              "secondary-fixed-dim": "#d0bcff",
+              error: "#ffb4ab",
+              "tertiary-fixed-dim": "#d3bbff",
+              "surface-variant": "#303632",
+              tertiary: "#faf1ff",
+              "on-primary-fixed": "#002020",
+              "on-background": "#dee4dd",
+              "on-secondary-fixed": "#23005c",
+              "tertiary-fixed": "#ebddff",
+              "on-tertiary-container": "#6e43be",
+              "inverse-surface": "#dee4dd",
+              "primary-fixed": "#2cfbfb",
+              "surface-container": "#1b211d",
+              "on-primary-fixed-variant": "#004f4f",
+              "on-surface": "#dee4dd",
+              "surface-container-low": "#171d19",
+              "secondary-container": "#571ebd",
+              "surface-tint": "#00dddd",
+              secondary: "#d0bcff",
+              "on-primary-container": "#006969",
+              "surface-container-high": "#252b27",
+              "primary-fixed-dim": "#00dddd",
+              "on-tertiary-fixed-variant": "#5728a5",
+              "on-tertiary": "#3f008d",
+              surface: "#0f1511",
+              "on-tertiary-fixed": "#250059",
+              "tertiary-container": "#e2d0ff",
+              "surface-dim": "#0f1511",
+              "surface-container-lowest": "#0a0f0c",
+              "outline-variant": "#3a4a49",
+              "on-secondary-fixed-variant": "#551abb",
+              "on-error": "#690005",
+              "surface-container-highest": "#303632",
+              background: "#0f1511",
+              "on-secondary-container": "#c4abff",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary"
+  >
+    <div class="scanline-overlay fixed inset-0 z-[100]"></div>
+    <!-- TopNavBar -->
+    <header
+      class="fixed top-0 w-full z-50 bg-[#0f1511]/80 backdrop-blur-xl border-b border-[#c7fffe]/10 clip-path-chamfer-bottom flex justify-between items-center px-8 h-16"
+    >
+      <div class="flex items-center gap-8">
+        <span
+          class="text-2xl font-bold tracking-widest text-[#c7fffe] drop-shadow-[0_0_10px_rgba(199,255,254,0.3)] font-['Space_Grotesk'] uppercase"
+          >VOID_NEXUS_OS</span
+        >
+        <nav class="hidden md:flex gap-6">
+          <a
+            class="font-['Space_Grotesk'] tracking-tighter uppercase text-[#c7fffe]/50 hover:text-[#c7fffe]/80 transition-colors"
+            href="#"
+            >TELEMETRY</a
+          >
+          <a
+            class="font-['Space_Grotesk'] tracking-tighter uppercase text-[#c7fffe]/50 hover:text-[#c7fffe]/80 transition-colors"
+            href="#"
+            >COMS</a
+          >
+          <a
+            class="font-['Space_Grotesk'] tracking-tighter uppercase text-[#c7fffe] border-b-2 border-[#c7fffe] pb-1"
+            href="#"
+            >UPLINK</a
+          >
+        </nav>
+      </div>
+      <div class="flex items-center gap-4">
+        <button
+          class="p-2 hover:bg-[#c7fffe]/5 transition-all duration-300 active:scale-95 text-[#c7fffe]"
+        >
+          <span
+            class="material-symbols-outlined"
+            data-icon="notifications_paused"
+            >notifications_paused</span
+          >
+        </button>
+        <button
+          class="p-2 hover:bg-[#c7fffe]/5 transition-all duration-300 active:scale-95 text-[#c7fffe]"
+        >
+          <span class="material-symbols-outlined" data-icon="account_tree"
+            >account_tree</span
+          >
+        </button>
+        <img
+          alt="User Bio-Metric Avatar"
+          class="w-8 h-8 rounded-full border border-primary/30"
+          data-alt="Cybernetic portrait of a high-tech faculty member with bioluminescent details and data overlays on a dark void background"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg96mXyinFpNP2DSCuG2ewluNqZDY_ZX_GFtWgU65J0_s7oJSLKAkQOC3K5f7d5JFs6uba_6aZoxejzV-U6Q6YAzJ1e-4-3earVSOTM_Hf3mFt243euHvxd8uOTTPGG8KrAQpJPUDeH3A1GjiG6ymfYggpGRvLblXP0JJAhw0lXD9ekH5krkTdLaS-AGo9E0BgpE85a7Af_Vkp_xDJEChQZf4OU5ziMQeQZAWvBvdtcdheamU6JZCkLDjbKS7CltpR56ew4no5ccp1"
+        />
+      </div>
+    </header>
+    <!-- SideNavBar -->
+    <aside
+      class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-[#0f1511] border-r border-[#c7fffe]/10 flex flex-col py-6 z-40"
+    >
+      <div class="px-6 mb-8">
+        <h2
+          class="font-['Space_Grotesk'] text-xs tracking-[0.2em] text-[#c7fffe]/40 uppercase mb-1"
+        >
+          FACULTY_COMMAND
+        </h2>
+        <p class="text-[10px] tracking-widest text-[#c7fffe]/20 uppercase">
+          SECTOR_07
+        </p>
+      </div>
+      <nav class="flex-1 space-y-1">
+        <a
+          class="flex items-center gap-4 px-6 py-3 font-['Space_Grotesk'] text-[12px] tracking-[0.1em] uppercase text-[#c7fffe]/40 hover:bg-[#c7fffe]/5 hover:text-[#c7fffe]/70 transition-all duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="terminal"
+            >terminal</span
+          >
+          COMMAND
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-3 font-['Space_Grotesk'] text-[12px] tracking-[0.1em] uppercase bg-[#c7fffe]/10 text-[#c7fffe] border-l-4 border-[#c7fffe] shadow-[inset_0_0_15px_rgba(199,255,254,0.1)]"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="grid_view"
+            >grid_view</span
+          >
+          SLOTS
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-3 font-['Space_Grotesk'] text-[12px] tracking-[0.1em] uppercase text-[#c7fffe]/40 hover:bg-[#c7fffe]/5 hover:text-[#c7fffe]/70 transition-all duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="pending_actions"
+            >pending_actions</span
+          >
+          REQUESTS
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-3 font-['Space_Grotesk'] text-[12px] tracking-[0.1em] uppercase text-[#c7fffe]/40 hover:bg-[#c7fffe]/5 hover:text-[#c7fffe]/70 transition-all duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="history"
+            >history</span
+          >
+          LOGS
+        </a>
+        <a
+          class="flex items-center gap-4 px-6 py-3 font-['Space_Grotesk'] text-[12px] tracking-[0.1em] uppercase text-[#c7fffe]/40 hover:bg-[#c7fffe]/5 hover:text-[#c7fffe]/70 transition-all duration-200"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined"
+            data-icon="settings_input_component"
+            >settings_input_component</span
+          >
+          SYSTEM
+        </a>
+      </nav>
+      <div class="px-6 mt-auto">
+        <button
+          class="w-full py-4 border border-primary/20 text-primary font-headline text-[10px] tracking-[0.3em] uppercase hover:bg-primary/10 transition-all duration-300 clip-path-chamfer-btn"
+        >
+          INITIATE_SYNC
+        </button>
+        <button
+          class="w-full mt-4 flex items-center justify-center gap-2 font-['Space_Grotesk'] text-[12px] tracking-[0.1em] uppercase text-error/50 hover:text-error transition-colors"
+        >
+          <span class="material-symbols-outlined" data-icon="power_settings_new"
+            >power_settings_new</span
+          >
+          TERMINATE
+        </button>
+      </div>
+    </aside>
+    <!-- Main Content Canvas -->
+    <main class="ml-64 mt-16 p-8 min-h-screen bg-background">
+      <!-- Dashboard Header -->
+      <div
+        class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
+      >
+        <div>
+          <span
+            class="text-primary font-headline tracking-[0.5em] text-xs uppercase opacity-60"
+            >ADMINISTRATION_OVERRIDE</span
+          >
+          <h1
+            class="text-5xl font-headline font-bold text-on-surface mt-2 tracking-tighter"
+          >
+            AVAILABILITY_MATRIX
+          </h1>
+          <p class="text-on-surface-variant font-label text-sm mt-2 max-w-xl">
+            Configure temporal access nodes for faculty consultation. Ensure all
+            synchronized sectors are broadcast via the Void Nexus uplink.
+          </p>
+        </div>
+        <div class="flex gap-4">
+          <div
+            class="bg-surface-container border-l-2 border-primary p-4 min-w-[160px]"
+          >
+            <span
+              class="block font-label text-[10px] uppercase text-on-surface-variant tracking-widest mb-1"
+              >Active Slots</span
+            >
+            <span class="text-3xl font-headline font-bold text-primary"
+              >24</span
+            >
+          </div>
+          <div
+            class="bg-surface-container border-l-2 border-secondary p-4 min-w-[160px]"
+          >
+            <span
+              class="block font-label text-[10px] uppercase text-on-surface-variant tracking-widest mb-1"
+              >Reservations</span
+            >
+            <span class="text-3xl font-headline font-bold text-secondary"
+              >08</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-12 gap-8">
+        <!-- Left Column: Form -->
+        <section class="col-span-12 lg:col-span-4 space-y-6">
+          <div class="bg-surface-container-low p-1 clip-path-card">
+            <div class="bg-surface-container px-6 py-8 h-full">
+              <div class="flex items-center gap-2 mb-8">
+                <span class="w-2 h-2 bg-primary animate-pulse"></span>
+                <h3
+                  class="font-headline text-lg font-bold tracking-widest uppercase"
+                >
+                  CREATE_SLOT
+                </h3>
+              </div>
+              <form class="space-y-6">
+                <div>
+                  <label
+                    class="block font-label text-[10px] uppercase text-primary tracking-widest mb-2"
+                    >Target Date</label
+                  >
+                  <div class="relative">
+                    <input
+                      class="w-full bg-surface-container-highest border-0 border-l-2 border-transparent focus:border-primary focus:ring-0 text-on-surface py-3 px-4 transition-all"
+                      type="date"
+                    />
+                    <div
+                      class="absolute inset-0 pointer-events-none border border-outline-variant/10"
+                    ></div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      class="block font-label text-[10px] uppercase text-primary tracking-widest mb-2"
+                      >Start Time</label
+                    >
+                    <input
+                      class="w-full bg-surface-container-highest border-0 border-l-2 border-transparent focus:border-primary focus:ring-0 text-on-surface py-3 px-4"
+                      type="time"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="block font-label text-[10px] uppercase text-primary tracking-widest mb-2"
+                      >End Time</label
+                    >
+                    <input
+                      class="w-full bg-surface-container-highest border-0 border-l-2 border-transparent focus:border-primary focus:ring-0 text-on-surface py-3 px-4"
+                      type="time"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    class="block font-label text-[10px] uppercase text-primary tracking-widest mb-2"
+                    >Sector Protocol</label
+                  >
+                  <select
+                    class="w-full bg-surface-container-highest border-0 border-l-2 border-transparent focus:border-primary focus:ring-0 text-on-surface py-3 px-4 appearance-none"
+                  >
+                    <option>Standard_Review</option>
+                    <option>Emergency_Override</option>
+                    <option>Priority_Thesis</option>
+                  </select>
+                </div>
+                <button
+                  class="w-full group relative overflow-hidden bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold py-4 tracking-[0.2em] uppercase clip-path-chamfer-btn shadow-[0_0_20px_rgba(199,255,254,0.2)] hover:shadow-[0_0_30px_rgba(199,255,254,0.4)] transition-all"
+                  type="submit"
+                >
+                  <span class="relative z-10">INITIATE_DEPLOYMENT</span>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- Secondary Tactical Card -->
+          <div
+            class="bg-surface-container-low p-6 border-l-4 border-secondary/30 relative overflow-hidden"
+          >
+            <div class="absolute top-0 right-0 p-2 opacity-10">
+              <span
+                class="material-symbols-outlined text-6xl"
+                data-icon="security"
+                >security</span
+              >
+            </div>
+            <h4
+              class="font-headline text-xs font-bold tracking-[0.2em] text-secondary mb-2 uppercase"
+            >
+              RECURRENCE_OVERRIDE
+            </h4>
+            <p
+              class="text-[11px] text-on-surface-variant font-label leading-relaxed"
+            >
+              System-wide synchronization will apply to all bi-weekly cycles
+              unless manually terminated.
+            </p>
+          </div>
+        </section>
+        <!-- Right Column: Data Grid -->
+        <section class="col-span-12 lg:col-span-8">
+          <div
+            class="bg-surface-container-low border border-outline-variant/10"
+          >
+            <!-- Grid Header -->
+            <div
+              class="grid grid-cols-12 gap-4 px-6 py-4 bg-surface-container-high border-b border-outline-variant/20"
+            >
+              <div
+                class="col-span-4 font-label text-[10px] uppercase tracking-widest text-on-surface-variant"
+              >
+                Temporal_Address
+              </div>
+              <div
+                class="col-span-3 font-label text-[10px] uppercase tracking-widest text-on-surface-variant"
+              >
+                Status_Code
+              </div>
+              <div
+                class="col-span-2 font-label text-[10px] uppercase tracking-widest text-on-surface-variant"
+              >
+                Uplink
+              </div>
+              <div
+                class="col-span-3 font-label text-[10px] uppercase tracking-widest text-on-surface-variant text-right"
+              >
+                Actions
+              </div>
+            </div>
+            <!-- Grid Items -->
+            <div class="divide-y divide-outline-variant/10">
+              <!-- Row 1 -->
+              <div
+                class="grid grid-cols-12 gap-4 px-6 py-6 items-center hover:bg-surface-container/50 transition-colors"
+              >
+                <div class="col-span-4">
+                  <div class="font-headline text-sm font-bold text-on-surface">
+                    OCT_24 // 09:00 - 10:30
+                  </div>
+                  <div
+                    class="text-[10px] font-label text-primary/60 tracking-widest mt-1"
+                  >
+                    ID: V-7729-NX
+                  </div>
+                </div>
+                <div class="col-span-3">
+                  <span
+                    class="inline-flex items-center px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold tracking-widest uppercase"
+                  >
+                    AVAILABLE
+                  </span>
+                </div>
+                <div class="col-span-2">
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant"
+                    data-icon="wifi_tethering"
+                    >wifi_tethering</span
+                  >
+                </div>
+                <div class="col-span-3 text-right">
+                  <button
+                    class="bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all px-4 py-2 text-[10px] font-headline font-bold tracking-widest uppercase clip-path-chamfer-btn border border-primary/20"
+                  >
+                    ACTIVATE_SLOT
+                  </button>
+                </div>
+              </div>
+              <!-- Row 2 -->
+              <div
+                class="grid grid-cols-12 gap-4 px-6 py-6 items-center hover:bg-surface-container/50 transition-colors"
+              >
+                <div class="col-span-4">
+                  <div class="font-headline text-sm font-bold text-on-surface">
+                    OCT_24 // 11:00 - 12:00
+                  </div>
+                  <div
+                    class="text-[10px] font-label text-primary/60 tracking-widest mt-1"
+                  >
+                    ID: V-7730-NX
+                  </div>
+                </div>
+                <div class="col-span-3">
+                  <span
+                    class="inline-flex items-center px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-bold tracking-widest uppercase"
+                  >
+                    RESERVED
+                  </span>
+                </div>
+                <div class="col-span-2">
+                  <span
+                    class="material-symbols-outlined text-secondary"
+                    data-icon="person_search"
+                    >person_search</span
+                  >
+                </div>
+                <div class="col-span-3 text-right">
+                  <button
+                    class="opacity-30 cursor-not-allowed bg-surface-container-highest px-4 py-2 text-[10px] font-headline font-bold tracking-widest uppercase clip-path-chamfer-btn border border-outline-variant/20"
+                  >
+                    LOCKED
+                  </button>
+                </div>
+              </div>
+              <!-- Row 3 -->
+              <div
+                class="grid grid-cols-12 gap-4 px-6 py-6 items-center hover:bg-surface-container/50 transition-colors"
+              >
+                <div class="col-span-4">
+                  <div class="font-headline text-sm font-bold text-on-surface">
+                    OCT_25 // 14:00 - 15:30
+                  </div>
+                  <div
+                    class="text-[10px] font-label text-primary/60 tracking-widest mt-1"
+                  >
+                    ID: V-7731-NX
+                  </div>
+                </div>
+                <div class="col-span-3">
+                  <span
+                    class="inline-flex items-center px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold tracking-widest uppercase"
+                  >
+                    AVAILABLE
+                  </span>
+                </div>
+                <div class="col-span-2">
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant"
+                    data-icon="wifi_tethering"
+                    >wifi_tethering</span
+                  >
+                </div>
+                <div class="col-span-3 text-right">
+                  <button
+                    class="bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all px-4 py-2 text-[10px] font-headline font-bold tracking-widest uppercase clip-path-chamfer-btn border border-primary/20"
+                  >
+                    ACTIVATE_SLOT
+                  </button>
+                </div>
+              </div>
+              <!-- Row 4 -->
+              <div
+                class="grid grid-cols-12 gap-4 px-6 py-6 items-center hover:bg-surface-container/50 transition-colors"
+              >
+                <div class="col-span-4">
+                  <div class="font-headline text-sm font-bold text-on-surface">
+                    OCT_25 // 16:00 - 17:00
+                  </div>
+                  <div
+                    class="text-[10px] font-label text-primary/60 tracking-widest mt-1"
+                  >
+                    ID: V-7732-NX
+                  </div>
+                </div>
+                <div class="col-span-3">
+                  <span
+                    class="inline-flex items-center px-2 py-1 bg-error/10 text-error text-[10px] font-bold tracking-widest uppercase"
+                  >
+                    OFFLINE
+                  </span>
+                </div>
+                <div class="col-span-2">
+                  <span
+                    class="material-symbols-outlined text-error/50"
+                    data-icon="cloud_off"
+                    >cloud_off</span
+                  >
+                </div>
+                <div class="col-span-3 text-right">
+                  <button
+                    class="bg-surface-container-highest hover:bg-primary hover:text-on-primary transition-all px-4 py-2 text-[10px] font-headline font-bold tracking-widest uppercase clip-path-chamfer-btn border border-primary/20"
+                  >
+                    ACTIVATE_SLOT
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Grid Footer/Pagination -->
+          <div class="mt-6 flex justify-between items-center">
+            <span
+              class="text-[10px] font-headline tracking-widest text-on-surface-variant uppercase"
+              >Matrix_Coverage: 84% Synchronized</span
+            >
+            <div class="flex gap-2">
+              <button
+                class="w-10 h-10 border border-outline-variant/30 flex items-center justify-center hover:bg-surface-container-highest transition-colors"
+              >
+                <span
+                  class="material-symbols-outlined text-sm"
+                  data-icon="chevron_left"
+                  >chevron_left</span
+                >
+              </button>
+              <button
+                class="w-10 h-10 border border-primary/50 text-primary flex items-center justify-center bg-primary/10"
+              >
+                1
+              </button>
+              <button
+                class="w-10 h-10 border border-outline-variant/30 flex items-center justify-center hover:bg-surface-container-highest transition-colors"
+              >
+                2
+              </button>
+              <button
+                class="w-10 h-10 border border-outline-variant/30 flex items-center justify-center hover:bg-surface-container-highest transition-colors"
+              >
+                <span
+                  class="material-symbols-outlined text-sm"
+                  data-icon="chevron_right"
+                  >chevron_right</span
+                >
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- Background Elements -->
+    <div
+      class="fixed bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none -z-10"
+    ></div>
+    <div
+      class="fixed top-20 left-64 w-[300px] h-[300px] bg-secondary/5 blur-[100px] rounded-full pointer-events-none -z-10"
+    ></div>
+  </body>
+</html>

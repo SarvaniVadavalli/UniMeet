@@ -1,0 +1,757 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>VOID_NEXUS_OS | STEWARDSHIP</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#3a4a49",
+              "on-tertiary": "#3f008d",
+              "secondary-fixed-dim": "#d0bcff",
+              "secondary-fixed": "#e9ddff",
+              background: "#0f1511",
+              "surface-container-high": "#252b27",
+              "on-tertiary-fixed": "#250059",
+              "inverse-surface": "#dee4dd",
+              "on-tertiary-container": "#6e43be",
+              "surface-container-low": "#171d19",
+              "on-background": "#dee4dd",
+              "surface-container": "#1b211d",
+              surface: "#0f1511",
+              "inverse-on-surface": "#2c322d",
+              "tertiary-fixed": "#ebddff",
+              "surface-bright": "#343b36",
+              "inverse-primary": "#006a6a",
+              error: "#ffb4ab",
+              "secondary-container": "#571ebd",
+              "primary-container": "#00f0f0",
+              "on-error-container": "#ffdad6",
+              "primary-fixed": "#2cfbfb",
+              secondary: "#d0bcff",
+              "on-primary-fixed-variant": "#004f4f",
+              "surface-container-lowest": "#0a0f0c",
+              "on-secondary-fixed-variant": "#551abb",
+              tertiary: "#faf1ff",
+              "surface-variant": "#303632",
+              "on-surface-variant": "#b9cac9",
+              "on-primary-fixed": "#002020",
+              "on-surface": "#dee4dd",
+              "on-primary-container": "#006969",
+              "surface-dim": "#0f1511",
+              "surface-tint": "#00dddd",
+              "surface-container-highest": "#303632",
+              "tertiary-fixed-dim": "#d3bbff",
+              "error-container": "#93000a",
+              "on-primary": "#003737",
+              outline: "#849493",
+              primary: "#c7fffe",
+              "on-error": "#690005",
+              "primary-fixed-dim": "#00dddd",
+              "on-tertiary-fixed-variant": "#5728a5",
+              "tertiary-container": "#e2d0ff",
+              "on-secondary-fixed": "#23005c",
+              "on-secondary-container": "#c4abff",
+              "on-secondary": "#3c0091",
+            },
+            borderRadius: {
+              DEFAULT: "0px",
+              lg: "0px",
+              xl: "0px",
+              full: "0px",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .chamfer-tr-bl {
+        clip-path: polygon(
+          0 0,
+          calc(100% - 20px) 0,
+          100% 20px,
+          100% 100%,
+          20px 100%,
+          0 calc(100% - 20px)
+        );
+      }
+      .scanline {
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.03) 0px,
+          rgba(0, 0, 0, 0.03) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
+      }
+      .glow-border {
+        box-shadow: inset 0 0 10px rgba(199, 255, 254, 0.1);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary"
+  >
+    <div class="scanline fixed inset-0 z-50"></div>
+    <!-- SideNavBar -->
+    <aside
+      class="fixed left-0 top-0 h-full flex flex-col bg-[#0f1511] dark:bg-[#0f1511] h-screen w-64 border-r border-[#c7fffe]/10 z-40"
+    >
+      <div class="p-6">
+        <div class="flex items-center gap-3 mb-10">
+          <div
+            class="w-8 h-8 bg-primary-container flex items-center justify-center chamfer-tr-bl"
+          >
+            <span
+              class="material-symbols-outlined text-on-primary text-sm"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >terminal</span
+            >
+          </div>
+          <div>
+            <h1
+              class="font-headline text-xl font-bold text-[#c7fffe] drop-shadow-[0_0_8px_rgba(199,255,254,0.4)] tracking-widest uppercase"
+            >
+              VOID_NEXUS
+            </h1>
+            <p
+              class="font-headline text-[10px] tracking-widest text-primary/60 uppercase"
+            >
+              SYSTEM_ACTIVE
+            </p>
+          </div>
+        </div>
+        <nav class="space-y-2">
+          <!-- CORE active -->
+          <a
+            class="flex items-center gap-4 px-4 py-3 text-[#c7fffe] border-l-2 border-[#c7fffe] bg-[#c7fffe]/5 font-headline tracking-widest uppercase text-xs transition-all duration-300"
+            href="#"
+          >
+            <span class="material-symbols-outlined text-lg">terminal</span>
+            <span>CORE</span>
+          </a>
+          <a
+            class="flex items-center gap-4 px-4 py-3 text-[#c7fffe]/40 hover:text-[#c7fffe]/80 hover:bg-[#c7fffe]/10 font-headline tracking-widest uppercase text-xs transition-all duration-300"
+            href="#"
+          >
+            <span class="material-symbols-outlined text-lg">database</span>
+            <span>REGISTRY</span>
+          </a>
+          <a
+            class="flex items-center gap-4 px-4 py-3 text-[#c7fffe]/40 hover:text-[#c7fffe]/80 hover:bg-[#c7fffe]/10 font-headline tracking-widest uppercase text-xs transition-all duration-300"
+            href="#"
+          >
+            <span class="material-symbols-outlined text-lg">analytics</span>
+            <span>REPORTS</span>
+          </a>
+          <a
+            class="flex items-center gap-4 px-4 py-3 text-[#c7fffe]/40 hover:text-[#c7fffe]/80 hover:bg-[#c7fffe]/10 font-headline tracking-widest uppercase text-xs transition-all duration-300"
+            href="#"
+          >
+            <span class="material-symbols-outlined text-lg">help_center</span>
+            <span>SUPPORT</span>
+          </a>
+        </nav>
+      </div>
+      <div class="mt-auto p-6 border-t border-[#c7fffe]/5">
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 bg-surface-container-highest border border-primary/20 flex items-center justify-center"
+          >
+            <img
+              alt="ADMIN_LEVEL_01"
+              class="w-full h-full object-cover"
+              data-alt="Cyberpunk high-resolution portrait of a technician in a dark room with green glowing screens reflected on face"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYrze3Q_pd3RoxNScxi-zkJ7hH6GAAiUO0SYrUTqBvHS9EZ6PHpv00pqkn5LwW_kLF-NfCSOYHqIPF2TPplUJNrlIKFXaKmml4fm-S_OORk5oC6YBZZ292e5g70LR5LTsU7D0ZpSTWK5THo2zKYBx04_GrIx60_aqBSguKurMPB4anvh_pEHG6j7y--tS9On2wcEDkzcjo-tskR6RknA0xpVp9vXR8Fv7fgUABpOgZJCQkywfX1LFIZbH0ZzpbaP87RhdG7TgtTHez"
+            />
+          </div>
+          <div class="overflow-hidden">
+            <p class="font-headline text-[10px] text-primary truncate">
+              ADMIN_LEVEL_01
+            </p>
+            <p class="font-headline text-[8px] text-primary/40">
+              AUTH_VERIFIED
+            </p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <!-- TopAppBar -->
+    <header
+      class="flex items-center justify-between px-6 ml-64 bg-[#0f1511]/80 backdrop-blur-xl border-b border-[#c7fffe]/10 docked full-width top-0 h-16 sticky top-0 z-30"
+    >
+      <div class="flex items-center gap-8">
+        <div class="relative group">
+          <span
+            class="absolute inset-y-0 left-3 flex items-center text-primary/40"
+          >
+            <span class="material-symbols-outlined text-sm">search</span>
+          </span>
+          <input
+            class="bg-surface-container-highest/50 border-none pl-10 pr-4 py-2 font-headline text-[10px] tracking-widest text-primary focus:ring-1 focus:ring-primary w-64 transition-all duration-300"
+            placeholder="SEARCH_NODES..."
+            type="text"
+          />
+        </div>
+        <nav class="hidden md:flex gap-6">
+          <a
+            class="font-headline text-[10px] tracking-tighter uppercase text-[#c7fffe] font-bold border-b border-[#c7fffe] py-1"
+            href="#"
+            >TELEMETRY_ALPHA</a
+          >
+          <a
+            class="font-headline text-[10px] tracking-tighter uppercase text-[#c7fffe]/50 hover:text-[#c7fffe] transition-colors py-1"
+            href="#"
+            >UPLINK_01</a
+          >
+        </nav>
+      </div>
+      <div class="flex items-center gap-6">
+        <button
+          class="flex items-center gap-2 bg-primary/10 border border-primary/30 px-4 py-1.5 font-headline text-[10px] tracking-widest text-primary hover:bg-primary/20 transition-all duration-300"
+        >
+          <span
+            class="material-symbols-outlined text-sm"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >sync</span
+          >
+          SYSTEM_SYNC
+        </button>
+        <div class="flex gap-4">
+          <span
+            class="material-symbols-outlined text-primary/50 cursor-pointer hover:text-primary transition-colors"
+            >notifications_active</span
+          >
+          <span
+            class="material-symbols-outlined text-primary/50 cursor-pointer hover:text-primary transition-colors"
+            >settings_input_component</span
+          >
+        </div>
+      </div>
+    </header>
+    <main class="ml-64 p-8 min-h-screen">
+      <!-- Stats Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div
+          class="bg-surface-container-low border-l-4 border-primary p-6 relative overflow-hidden group"
+        >
+          <div
+            class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity"
+          >
+            <span class="material-symbols-outlined text-8xl">hub</span>
+          </div>
+          <p
+            class="font-label text-[10px] uppercase tracking-[0.2em] text-primary/60 mb-2"
+          >
+            TOTAL_NODES
+          </p>
+          <h3
+            class="font-headline text-5xl font-bold text-primary tracking-tighter"
+          >
+            4,092
+          </h3>
+          <div class="mt-4 flex items-center gap-2">
+            <span
+              class="h-1 flex-1 bg-surface-container-highest overflow-hidden"
+            >
+              <span class="block h-full bg-primary w-[78%]"></span>
+            </span>
+            <span class="font-headline text-[10px] text-primary">78%</span>
+          </div>
+        </div>
+        <div
+          class="bg-surface-container-low border-l-4 border-secondary p-6 relative overflow-hidden group"
+        >
+          <div
+            class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity"
+          >
+            <span class="material-symbols-outlined text-8xl"
+              >sensor_occupied</span
+            >
+          </div>
+          <p
+            class="font-label text-[10px] uppercase tracking-[0.2em] text-secondary/60 mb-2"
+          >
+            ACTIVE_SESSIONS
+          </p>
+          <h3
+            class="font-headline text-5xl font-bold text-secondary tracking-tighter"
+          >
+            1,204
+          </h3>
+          <div class="mt-4 flex items-center gap-2">
+            <span
+              class="h-1 flex-1 bg-surface-container-highest overflow-hidden"
+            >
+              <span class="block h-full bg-secondary w-[42%]"></span>
+            </span>
+            <span class="font-headline text-[10px] text-secondary">42%</span>
+          </div>
+        </div>
+        <div
+          class="bg-surface-container-low border-l-4 border-error p-6 relative overflow-hidden group"
+        >
+          <div
+            class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity"
+          >
+            <span class="material-symbols-outlined text-8xl"
+              >report_problem</span
+            >
+          </div>
+          <p
+            class="font-label text-[10px] uppercase tracking-[0.2em] text-error/60 mb-2"
+          >
+            ANOMALY_LOGS
+          </p>
+          <h3
+            class="font-headline text-5xl font-bold text-error tracking-tighter"
+          >
+            07
+          </h3>
+          <div
+            class="mt-4 font-headline text-[10px] text-error flex items-center gap-1"
+          >
+            <span class="material-symbols-outlined text-xs">trending_up</span>
+            CRITICAL_STATUS
+          </div>
+        </div>
+        <div
+          class="bg-surface-container-low border-l-4 border-outline p-6 relative overflow-hidden group"
+        >
+          <div
+            class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity"
+          >
+            <span class="material-symbols-outlined text-8xl">memory</span>
+          </div>
+          <p
+            class="font-label text-[10px] uppercase tracking-[0.2em] text-outline mb-2"
+          >
+            MEM_ALLOCATION
+          </p>
+          <h3
+            class="font-headline text-5xl font-bold text-on-surface tracking-tighter"
+          >
+            98.2
+          </h3>
+          <div class="mt-4 font-headline text-[10px] text-outline">
+            GIGABITS_PER_SEC
+          </div>
+        </div>
+      </div>
+      <!-- Steward Ledger -->
+      <div class="mb-6 flex justify-between items-end">
+        <div>
+          <h2
+            class="font-headline text-3xl font-bold text-on-surface tracking-tighter uppercase mb-1"
+          >
+            STEWARDSHIP_LEDGER
+          </h2>
+          <p
+            class="font-label text-[10px] text-primary/50 tracking-[0.3em] uppercase"
+          >
+            FACULTY_STUDENT_CENTRAL_REGISTRY
+          </p>
+        </div>
+        <div class="flex gap-4">
+          <div class="flex border border-outline/20">
+            <button
+              class="px-4 py-2 bg-surface-container-highest text-primary font-headline text-[10px] tracking-widest border-r border-outline/20"
+            >
+              ALL_NODES
+            </button>
+            <button
+              class="px-4 py-2 text-on-surface/40 hover:text-on-surface font-headline text-[10px] tracking-widest"
+            >
+              FACULTY
+            </button>
+            <button
+              class="px-4 py-2 text-on-surface/40 hover:text-on-surface font-headline text-[10px] tracking-widest"
+            >
+              STUDENTS
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="bg-surface-container-low relative">
+        <!-- Corner Brackets -->
+        <div
+          class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary z-10"
+        ></div>
+        <div
+          class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary z-10"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary z-10"
+        ></div>
+        <div
+          class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary z-10"
+        ></div>
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-surface-container-high text-left">
+                <th
+                  class="px-6 py-4 font-headline text-[10px] tracking-[0.2em] text-primary/70 uppercase"
+                >
+                  ID_TAG
+                </th>
+                <th
+                  class="px-6 py-4 font-headline text-[10px] tracking-[0.2em] text-primary/70 uppercase"
+                >
+                  NAME_STRING
+                </th>
+                <th
+                  class="px-6 py-4 font-headline text-[10px] tracking-[0.2em] text-primary/70 uppercase"
+                >
+                  ROLE_CLASS
+                </th>
+                <th
+                  class="px-6 py-4 font-headline text-[10px] tracking-[0.2em] text-primary/70 uppercase"
+                >
+                  STATUS_BIT
+                </th>
+                <th
+                  class="px-6 py-4 font-headline text-[10px] tracking-[0.2em] text-primary/70 uppercase text-right"
+                >
+                  ACTION_SEQUENCE
+                </th>
+              </tr>
+            </thead>
+            <tbody class="font-body text-xs">
+              <tr
+                class="border-b border-outline-variant/10 hover:bg-primary/5 transition-colors group"
+              >
+                <td class="px-6 py-4 font-mono text-primary/80">#VX-0091</td>
+                <td class="px-6 py-4 font-medium text-on-surface">
+                  ELARA_VANCE
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 text-[9px]"
+                    >FACULTY</span
+                  >
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-primary"></span>
+                    <span class="text-primary tracking-widest text-[10px]"
+                      >ACTIVE</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <div
+                    class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <button
+                      class="bg-primary px-3 py-1 text-on-primary font-headline text-[9px] font-bold tracking-tighter hover:bg-primary-container"
+                    >
+                      DECOMMISSION
+                    </button>
+                    <button
+                      class="border border-primary/40 px-3 py-1 text-primary font-headline text-[9px] font-bold tracking-tighter hover:bg-primary/10"
+                    >
+                      LOGS
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr
+                class="bg-surface-container/50 border-b border-outline-variant/10 hover:bg-primary/5 transition-colors group"
+              >
+                <td class="px-6 py-4 font-mono text-primary/80">#VX-1204</td>
+                <td class="px-6 py-4 font-medium text-on-surface">
+                  KAEL_THORNE
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-2 py-0.5 bg-secondary/10 text-secondary border border-secondary/20 text-[9px]"
+                    >STUDENT</span
+                  >
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-primary"></span>
+                    <span class="text-primary tracking-widest text-[10px]"
+                      >ACTIVE</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <div
+                    class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <button
+                      class="bg-primary px-3 py-1 text-on-primary font-headline text-[9px] font-bold tracking-tighter hover:bg-primary-container"
+                    >
+                      DECOMMISSION
+                    </button>
+                    <button
+                      class="border border-primary/40 px-3 py-1 text-primary font-headline text-[9px] font-bold tracking-tighter hover:bg-primary/10"
+                    >
+                      LOGS
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr
+                class="border-b border-outline-variant/10 hover:bg-primary/5 transition-colors group"
+              >
+                <td class="px-6 py-4 font-mono text-primary/80">#VX-0882</td>
+                <td class="px-6 py-4 font-medium text-on-surface">
+                  SARA_JENKINS
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 text-[9px]"
+                    >FACULTY</span
+                  >
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2 opacity-40">
+                    <span class="w-1.5 h-1.5 bg-outline"></span>
+                    <span class="text-outline tracking-widest text-[10px]"
+                      >DORMANT</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <div
+                    class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <button
+                      class="bg-primary px-3 py-1 text-on-primary font-headline text-[9px] font-bold tracking-tighter hover:bg-primary-container"
+                    >
+                      ACTIVATE
+                    </button>
+                    <button
+                      class="border border-primary/40 px-3 py-1 text-primary font-headline text-[9px] font-bold tracking-tighter hover:bg-primary/10"
+                    >
+                      LOGS
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr
+                class="bg-surface-container/50 border-b border-outline-variant/10 hover:bg-primary/5 transition-colors group"
+              >
+                <td class="px-6 py-4 font-mono text-primary/80">#VX-9901</td>
+                <td class="px-6 py-4 font-medium text-on-surface">
+                  VOID_ENTITY_A
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-2 py-0.5 bg-error/10 text-error border border-error/20 text-[9px]"
+                    >RESTRICTED</span
+                  >
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-error"></span>
+                    <span class="text-error tracking-widest text-[10px]"
+                      >SUSPENDED</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <div
+                    class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <button
+                      class="bg-primary px-3 py-1 text-on-primary font-headline text-[9px] font-bold tracking-tighter hover:bg-primary-container"
+                    >
+                      ACTIVATE
+                    </button>
+                    <button
+                      class="border border-error/40 px-3 py-1 text-error font-headline text-[9px] font-bold tracking-tighter hover:bg-error/10"
+                    >
+                      PURGE
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr
+                class="border-b border-outline-variant/10 hover:bg-primary/5 transition-colors group"
+              >
+                <td class="px-6 py-4 font-mono text-primary/80">#VX-0045</td>
+                <td class="px-6 py-4 font-medium text-on-surface">LYRA_MOSS</td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-2 py-0.5 bg-secondary/10 text-secondary border border-secondary/20 text-[9px]"
+                    >STUDENT</span
+                  >
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-primary"></span>
+                    <span class="text-primary tracking-widest text-[10px]"
+                      >ACTIVE</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <div
+                    class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <button
+                      class="bg-primary px-3 py-1 text-on-primary font-headline text-[9px] font-bold tracking-tighter hover:bg-primary-container"
+                    >
+                      DECOMMISSION
+                    </button>
+                    <button
+                      class="border border-primary/40 px-3 py-1 text-primary font-headline text-[9px] font-bold tracking-tighter hover:bg-primary/10"
+                    >
+                      LOGS
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div
+          class="p-4 bg-surface-container-highest/20 flex justify-between items-center border-t border-outline-variant/10"
+        >
+          <p class="font-headline text-[10px] text-primary/40 tracking-widest">
+            SHOWING 5 OF 4092 NODES
+          </p>
+          <div class="flex gap-2">
+            <button
+              class="w-8 h-8 flex items-center justify-center border border-outline/20 text-primary/40 hover:border-primary hover:text-primary transition-all"
+            >
+              <span class="material-symbols-outlined text-sm"
+                >chevron_left</span
+              >
+            </button>
+            <button
+              class="w-8 h-8 flex items-center justify-center border border-primary text-primary bg-primary/10 font-headline text-[10px]"
+            >
+              01
+            </button>
+            <button
+              class="w-8 h-8 flex items-center justify-center border border-outline/20 text-primary/40 hover:border-primary hover:text-primary transition-all font-headline text-[10px]"
+            >
+              02
+            </button>
+            <button
+              class="w-8 h-8 flex items-center justify-center border border-outline/20 text-primary/40 hover:border-primary hover:text-primary transition-all font-headline text-[10px]"
+            >
+              03
+            </button>
+            <button
+              class="w-8 h-8 flex items-center justify-center border border-outline/20 text-primary/40 hover:border-primary hover:text-primary transition-all"
+            >
+              <span class="material-symbols-outlined text-sm"
+                >chevron_right</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- System Alerts / Activity Asymmetric Section -->
+      <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 space-y-6">
+          <div class="bg-surface-container-low p-6 chamfer-tr-bl relative">
+            <div class="flex items-center gap-2 mb-4">
+              <span
+                class="material-symbols-outlined text-primary"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >terminal</span
+              >
+              <h4
+                class="font-headline text-xs font-bold tracking-widest text-primary uppercase"
+              >
+                SECURITY_COMM_TERMINAL
+              </h4>
+            </div>
+            <div
+              class="bg-black/40 p-4 font-mono text-[11px] text-primary/80 leading-relaxed space-y-2 border border-primary/10"
+            >
+              <p>&gt; [INFO] SYSTEM_INTEGRITY_CHECK_COMPLETED</p>
+              <p>&gt; [WARN] ATTEMPTED_UNAUTHORIZED_ENTRY_NODE_VX-9901</p>
+              <p class="text-primary">&gt; [OK] PROTOCOL_X7_ENFORCED</p>
+              <p>&gt; [INFO] RE-ALLOCATING_SESSIONS_BUFFER_ZONE_04</p>
+              <div class="flex gap-1 animate-pulse">
+                <span>_</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <div class="bg-surface-container-high p-6 border-t-2 border-primary">
+            <p
+              class="font-label text-[10px] text-primary/60 tracking-[0.2em] mb-4"
+            >
+              SYSTEM_STATUS
+            </p>
+            <div
+              class="flex items-center justify-between py-2 border-b border-outline/10"
+            >
+              <span class="font-headline text-[10px] text-on-surface/60"
+                >UPLINK_STABILITY</span
+              >
+              <span class="font-headline text-[10px] text-primary font-bold"
+                >99.9%</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-between py-2 border-b border-outline/10"
+            >
+              <span class="font-headline text-[10px] text-on-surface/60"
+                >NODE_LATENCY</span
+              >
+              <span class="font-headline text-[10px] text-primary font-bold"
+                >14MS</span
+              >
+            </div>
+            <div class="flex items-center justify-between py-2">
+              <span class="font-headline text-[10px] text-on-surface/60"
+                >ENCRYPTION_LEVEL</span
+              >
+              <span class="font-headline text-[10px] text-primary font-bold"
+                >SHA-512X</span
+              >
+            </div>
+            <button
+              class="w-full mt-6 py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline text-[10px] font-bold tracking-[0.3em] uppercase hover:brightness-110 transition-all"
+            >
+              MANAGE_KEY_VAULT
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Contextual FAB - suppressed according to rules as this is an Admin Management screen -->
+  </body>
+</html>
