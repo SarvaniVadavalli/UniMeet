@@ -40,15 +40,16 @@ It provides a centralized platform where students can interact, build networks, 
 
 ## 📂 Project Structure
 
+
 UniMeet/
 │
 ├── frontend/        # React frontend
 ├── backend/         # Node.js backend
-├── models/          # Database schemas
-├── routes/          # API routes
-├── controllers/     # Business logic
+│   ├── models/      # Database schemas
+│   ├── routes/      # API routes
+│   ├── controllers/ # Business logic
+│
 └── README.md
-
 ---
 
 ## ⚙️ Installation & Setup
