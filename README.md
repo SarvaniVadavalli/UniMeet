@@ -103,6 +103,7 @@ cd ../frontend && npm start
 | Shaik Zeeshaan Suhail | Team Member   | 
 | Marisa Amith Ratna    | Team Member   |
 | Bangari Sai Srujana   | Team Member   |
+| N S Pavan Vybhav      | Team Member   |
 
 ---
 
