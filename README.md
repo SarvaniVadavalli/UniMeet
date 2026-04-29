@@ -100,8 +100,8 @@ cd ../frontend && npm start
 | Name                  | Role          |
 |-----------------------|---------------|
 | Vadavalli Sarvani     | AIML Student  |
-| Shaik Zeeshaan Suhail | Team member   |
-| Marisa Amith Ratna    | Team member   |
+| Shaik Zeeshaan Suhail | Waste Fellow  |
+| Marisa Amith Ratna    | Ojas Gambheera|
 | Bangari Sai Srujana   | Team member   |
 
 ---
