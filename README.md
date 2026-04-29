@@ -99,10 +99,10 @@ cd ../frontend && npm start
 
 | Name                  | Role          |
 |-----------------------|---------------|
-| Vadavalli Sarvani     | AIML Student  |
-| Shaik Zeeshaan Suhail | Waste Fellow  |
-| Marisa Amith Ratna    | Ojas Gambheera|
-| Bangari Sai Srujana   | Team member   |
+| Vadavalli Sarvani     | Team Member   |
+| Shaik Zeeshaan Suhail | Team Member   | 
+| Marisa Amith Ratna    | Team Member   |
+| Bangari Sai Srujana   | Team Member   |
 
 ---
 
