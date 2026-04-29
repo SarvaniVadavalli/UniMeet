@@ -140,8 +140,10 @@ If you like this project:
 
 ---
 
-## 📜 License
+## 👥 Team
 
-This project is licensed under the MIT License.
-
+- **Vadavalli Sarvani**  
+- **Shaik Zeeshaan Suhail**  
+- **Marisa Amith Ratna**  
+- **Bangari Sai Srujana**  
 ---
