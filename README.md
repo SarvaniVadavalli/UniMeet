@@ -1,6 +1,6 @@
-# 🚀 UniMeet
+# UniMeet
 
-### Connect • Collaborate • Grow
+> A centralized platform where university students can connect, collaborate, and grow together.
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/SarvaniVadavalli/UniMeet)
 ![GitHub stars](https://img.shields.io/github/stars/SarvaniVadavalli/UniMeet)
@@ -9,28 +9,20 @@
 
 ---
 
-## 🌟 Overview
+## Features
 
-**UniMeet** is a full-stack web application designed to help students connect, collaborate, and grow within a university ecosystem.
-
-It provides a centralized platform where students can interact, build networks, and participate in events seamlessly.
-
----
-
-## ✨ Features
-
-* 👥 User Authentication (Login & Register)
-* 💬 Real-time communication between users
-* 📅 Event creation and participation
-* 🤝 Networking with like-minded students
-* 📊 Personalized dashboard
+- 👥 User authentication (login & register)
+- 💬 Real-time messaging between users
+- 📅 Event creation and management
+- 🤝 Student networking
+- 📊 Personalized dashboard
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer    | Technology                      |
-| -------- | ------------------------------- |
+|----------|---------------------------------|
 | Frontend | React.js, HTML, CSS, JavaScript |
 | Backend  | Node.js, Express.js             |
 | Database | MongoDB                         |
@@ -38,113 +30,80 @@ It provides a centralized platform where students can interact, build networks, 
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
-
+```
 UniMeet/
-│
-├── frontend/        # React frontend
-├── backend/         # Node.js backend
-│   ├── models/      # Database schemas
-│   ├── routes/      # API routes
-│   ├── controllers/ # Business logic
-│
+├── frontend/          # React application
+├── backend/
+│   ├── models/        # Database schemas
+│   ├── routes/        # API routes
+│   └── controllers/   # Business logic
 └── README.md
+```
+
 ---
 
-## ⚙️ Installation & Setup
+## Getting Started
 
-### 1️⃣ Clone the Repository
+### 1. Clone the repository
 
+```bash
 git clone https://github.com/SarvaniVadavalli/UniMeet.git
 cd UniMeet
+```
 
----
+### 2. Install dependencies
 
-### 2️⃣ Install Dependencies
-
+```bash
 # Backend
-
-cd backend
-npm install
+cd backend && npm install
 
 # Frontend
+cd ../frontend && npm install
+```
 
-cd ../frontend
-npm install
+### 3. Run the application
 
----
-
-### 3️⃣ Run the Application
-
+```bash
 # Start backend
-
-cd backend
-npm run dev
+cd backend && npm run dev
 
 # Start frontend
-
-cd ../frontend
-npm start
-
----
-
-## 🔗 API Endpoints
-
-| Method | Endpoint  | Description   |
-| ------ | --------- | ------------- |
-| POST   | /register | Register user |
-| POST   | /login    | Login user    |
-| GET    | /users    | Get all users |
-| POST   | /events   | Create event  |
+cd ../frontend && npm start
+```
 
 ---
 
-## 🎯 Use Cases
+## API Endpoints
 
-* 🎓 Student networking platform
-* 🤝 Collaboration system
-* 📅 Event management tool
-* 🌐 Campus community builder
-
----
-
-## 🚀 Future Enhancements
-
-* 🔔 Notifications system
-* 🤖 AI-based recommendations
-* 📱 Mobile app support
-* 🎥 Video meeting integration
+| Method | Endpoint    | Description         |
+|--------|-------------|---------------------|
+| POST   | /register   | Register a new user |
+| POST   | /login      | Authenticate a user |
+| GET    | /users      | Retrieve all users  |
+| POST   | /events     | Create an event     |
 
 ---
 
-## 👩‍💻 Author
+## Roadmap
 
-Sarvani Vadavalli
-AIML Student | Tech Enthusiast
-
----
-
-## 🌍 Vision
-
-To create a platform where students connect, collaborate, and grow together.
+- [ ] Notifications system
+- [ ] AI-based recommendations
+- [ ] Mobile app support
+- [ ] Video meeting integration
 
 ---
 
-## ⭐ Support
+## Team
 
-If you like this project:
-
-* Star ⭐ the repository
-* Fork 🍴 it
-* Share 📢 with others
+| Name                  | Role          |
+|-----------------------|---------------|
+| Vadavalli Sarvani     | AIML Student  |
+| Shaik Zeeshaan Suhail | Team member   |
+| Marisa Amith Ratna    | Team member   |
+| Bangari Sai Srujana   | Team member   |
 
 ---
 
-## 👥 Team
-
-- **Vadavalli Sarvani**  
-- **Shaik Zeeshaan Suhail**  
-- **Marisa Amith Ratna**  
-- **Bangari Sai Srujana**  
----
+If you find this project useful, consider starring ⭐ or forking 🍴 the repository.
